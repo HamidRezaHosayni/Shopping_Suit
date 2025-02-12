@@ -1,0 +1,45 @@
+
+:root{
+    --them1:#4F4F4F;
+    --them2:#FBFF2B;
+    --them3:#D9D9D9;
+    --them4:#000000;
+    --them5:#FF0000;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: v-light;
+    src: url("../font/vazir/Vazir-Light.woff");
+}
+@font-face {
+    font-family: v-medium;
+    src: url("../font/vazir/Vazir-Medium.woff");
+}
+@font-face {
+    font-family: v-bold;
+    src: url("../font/vazir/Vazir-Bold.woff");
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 0.9rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

@@ -1,0 +1,31 @@
+
+:root{
+    --them1:#4F4F4F;
+    --them2:#FBFF2B;
+    --them3:#D9D9D9;
+    --them4:#000000;
+    --them5:#FF0000;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family:"v_Light";
+    src: url("../font/Vazir-Light.woff");
+}
+
+@font-face {
+    font-family:"v_Medium";
+    src: url("../font/Vazir-Medium.woff");
+}
+
+@font-face {
+    font-family:"v_Bold";
+    src: url("../font/Vazir-Bold.woff");
+}
+
+body{
+    font-family: "v_Light";
+}

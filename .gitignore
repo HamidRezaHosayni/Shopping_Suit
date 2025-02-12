@@ -1,0 +1,63 @@
+# Node.js dependencies
+node_modules/
+cotshalvar/node_modules/
+cotshalvar/public/img
+npm-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+.next/
+out/
+dist/
+.cache/
+.vercel/
+.vscode/
+
+# React & Next.js specific
+*.DS_Store
+public/sw.js
+public/workbox-*.js
+public/workbox-*.json
+coverage/
+jest/
+cypress/
+storybook-static/
+
+# Ignore images and videos
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+*.bmp
+*.tiff
+*.ico
+
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.flv
+*.wmv
+*.webm
+*.mpeg
+*.mp3
+*.wav
+*.ogg
+*.aac
