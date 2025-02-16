@@ -248,7 +248,7 @@ class Class_All_Query {
                 console.log("select table add_product form successfully...!!!")
                 return value_select_add_product_table[0];
             }
-            else { console.log("error select add_product table") }
+            else { console.log("error select add_product table. table is Empty") }
         }).catch((e) => { console.log("error excute qury select add_product Tabel : \n" + e) })
     }
 

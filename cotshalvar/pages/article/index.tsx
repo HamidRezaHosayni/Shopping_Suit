@@ -1,10 +1,18 @@
 import Image from 'next/image'
 import React from 'react'
 
+
+// import image 
+import image_1 from "../../public/img/article/1.jpg"
+import image_2 from "../../public/img/article/2.jpg"
+import image_3 from "../../public/img/article/3.jpg"
+
+
+
 function One_Article() {
-    return (
+    return ( 
         <div className='container m-auto leading-9'>
-            <Image className='!w-full lg:!h-[unset] !h-[10rem]' src={"/img/article/1.jpg"} width={1000} height={500} alt='picture_one_Article' />
+            <Image className='!w-full lg:!h-[unset] !h-[10rem]' placeholder='blur' priority={false}  src={image_1} width={1000} height={500} alt='یک مرد روبه روی ایینه که لبه استین خود راگرفته است و دارد خود را در ایننه نگاه میکند و کت وشلوار مشکی پوشیده است.' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی" />
             <div className='px-5'>
                 <h1 className='lg:text-[2rem] text-[1rem] text-center lg:text-right mt-[2rem] font-v-medium'>تفاوت کت شلوار شخصی دوز وبازاری</h1>
                 <p className='mt-[2rem] lg:text-[1rem] text-[0.8rem] font-v-light'>با توجه به گستردگی و تنوع دنیای مد و پوشاک، استایل و پوشش های زیادی برای مردان نیز وجود دارد. با این تفاسیر کت و شلوار یک استایل رسمی مردانه بوده که دست خوش تغییراتی در طول سالیان مختلف شده اما هرگز از کمد لباس مردان حذف نشده است.</p>
@@ -15,7 +23,7 @@ function One_Article() {
 
             <div className='flex justify-center items-center flex-col lg:flex-row-reverse mt-[4rem] px-5'>
                 <div className='lg:w-[50%] w-[unset]'>
-                    <Image className='lg:mr-[2rem] lg:!h-[45rem] lg:!w-[40rem]' src={"/img/article/2.jpg"} width={500} height={500} alt='picture_Article_one' />
+                    <Image className='lg:mr-[2rem] lg:!h-[30rem] lg:!w-[55rem]' placeholder='blur' priority={false}  src={image_2} width={500} height={500} alt='دو عکس کت وشلوار در تن یک مرد که یکی ابی وبازاری هست و ان یکی سفید وشخصی دوزی شده است' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
                 </div>
 
                 <div className='lg:w-[50%] w-[unset] mt-[5rem] lg:mt-[unset] leading-10'>
@@ -43,7 +51,7 @@ function One_Article() {
                 </div>
 
                 <div className='lg:w-[30%] lg:ml-[4rem] lg:mt-[unset] mt-5'>
-                    <Image src={"/img/article/3.jpg"} width={500} height={500} alt='picture_' />
+                    <Image src={image_3} placeholder='blur' priority={false} width={500} height={500} alt='یک عکس انیمیشنی که کت وشلوار بد وخوب را نشان میدهد.' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
                 </div>
 
             </div>

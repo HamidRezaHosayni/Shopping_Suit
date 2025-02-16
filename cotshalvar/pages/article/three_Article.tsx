@@ -1,10 +1,18 @@
 import Image from 'next/image'
 import React from 'react'
 
+
+// import Image 
+import image_1 from "../../public/img/article/9.jpg"
+import image_2 from "../../public/img/article/10.jpg"
+import image_3 from "../../public/img/article/11.jpg"
+
+
+
 function Three_Article() {
   return (
     <div className='container m-auto leading-9'>
-      <Image className='!w-full' src={"/img/article/9.jpg"} width={500} height={500} alt='Article_Three' />
+      <Image className='!w-full' src={image_1} placeholder='blur' priority={false} width={500} height={500} alt='یک عکس سیاه وسفید که در ان یک مرد کت شلوار پوشیده است و دو دستان خود رادر جیب شلوار خود کرده اسArticle_Three'  title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی" />
       <div className='mt-[5rem] px-4 lg:px-[unset]'>
         <h1 className='lg:text-[2rem] text-[1.5rem] text-center lg:text-right  font-v-medium'>کت شلوار مردانه</h1>
         <p className='lg:text-[1rem] text-[0.8rem] text-justify font-v-light mt-[1rem]'>کت شلوار مردانه در زمان حضور آقایان در مجالس رسمی در اولویت انتخاب آنها قرار داشته و در سراسر دنیا طرفداران بسیار زیادی دارد. برخی افراد با تصورات اشتباه خود در این زمینه گمان می کنند که این نوع پوشش تنها در مکان های رسمی کاربرد دارد حال آن که آقایان می توانند با انتخاب مناسب در تمامی مکان ها و مجالس از این نوع پوشش استفاده نمایند.</p>
@@ -21,7 +29,7 @@ function Three_Article() {
           <p className='lg:text-[1rem] text-[0.8rem] text-justify font-v-light'>نکته: سبک و ظاهر کت شلوار به گونه ای است که می توانید آنها را با لباس های دیگر نیز بپوشید. مثلا کت را با شلوارهای دیگر در رنگ های متنوع و مختلف بپوشید به گونه ای که نگاه همگان را به خود جلب نمایید.</p>
         </div>
         <div className='lg:w-[50%] lg:mr-[1rem] mt-[2rem] lg:mt-[unset]'>
-          <Image className='!w-full' src={"/img/article/10.jpg"} width={500} height={500} alt='picture_Article_Three' />
+          <Image className='!w-full' src={image_2} placeholder='blur' priority={false} width={500} height={500} alt='سه مرد با کت وشلوار ای که یک گل قرمز در جیب جلوی کت خود کرده است با پس زمینه ابی و صورتی'  title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی" />
         </div>
       </div>
 
@@ -39,7 +47,7 @@ function Three_Article() {
 
         </div>
         <div className='lg:w-[40%] lg:ml-[2rem] mt-[2rem] lg:mt-[unset]'>
-          <Image className='!w-full' src={"/img/article/11.jpg"} width={500} height={500} alt='picture_Article_Three' />
+          <Image className='!w-full !h-full' placeholder='blur' priority={false} src={image_3} width={500} height={500} alt='picture_Article_Three' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی" />
 
         </div>
       </div>

@@ -11,32 +11,39 @@ route_validation_email.use(validation_method_validation_email_page)
 
 
 route_validation_email.get("/validation_email", async (req, res) => {
-
-    const select_table_regeser_validation = await SELECT_ALL_TABLE_REGESTER_VALIDATION()
-    const find_id_query = select_table_regeser_validation.find(item => item.id === req.query.id)
-
-    if (find_id_query) {
-        console.log(find_id_query)
-        const object_profile_user={
-            "id":find_id_query.id,
-            "username": find_id_query.username,
-            "password": find_id_query.password,
-            "phonenumber": find_id_query.phonenumber,
-            "email":find_id_query.email,
-            "Address":"",
-            "Pstal_Address":""
+    try{
+        
+        const select_table_regeser_validation = await SELECT_ALL_TABLE_REGESTER_VALIDATION()
+        const find_id_query = select_table_regeser_validation.find(item => item.id === req.query.id)
+    
+        if (find_id_query) {
+            console.log(find_id_query)
+            const object_profile_user={
+                "id":find_id_query.id,
+                "username": find_id_query.username,
+                "password": find_id_query.password,
+                "phonenumber": find_id_query.phonenumber,
+                "email":find_id_query.email,
+                "Address":"",
+                "Pstal_Address":""
+            }
+            console.log(object_profile_user)
+            INSERT_DATA_IN_REGESTER_VALIDATION_TO_REGESTER(find_id_query);
+            INSERT_DATA_IN_PROFILE_USER(object_profile_user)
+            DELETE_DATA_IN_REGESTER_VALIDATION_TABLE(find_id_query.id)
         }
-        console.log(object_profile_user)
-        INSERT_DATA_IN_REGESTER_VALIDATION_TO_REGESTER(find_id_query);
-        INSERT_DATA_IN_PROFILE_USER(object_profile_user)
-        DELETE_DATA_IN_REGESTER_VALIDATION_TABLE(find_id_query.id)
+    
+    
+    
+    
+        res.end()
+        return;
+
+
+    }catch(e){
+        console.log("validation_Email_file have a Error !!!!\n"+e);
+        res.status(403).end()
     }
-
-
-
-
-    res.end()
-    return;
 })
 
 module.exports = route_validation_email;

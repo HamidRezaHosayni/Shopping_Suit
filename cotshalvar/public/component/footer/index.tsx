@@ -49,7 +49,7 @@ function Footer() {
               <p className='w-full text-center leading-5 lg:leading-8 mt-3 font-v-light text-[0.8rem] lg:text-[1rem] text-black lg:text-white'>
                 در گذرگاه پرشتاب زمان که مد روز به سرعت دگرگون می‌شود، Art Man Class، برند شناخته شده خیاطی سعید، همچون نگینی درخشان در صنعت پوشاک
               </p>
-              <p className="mr-[1rem] text-blue-400 text-center"><Link href={"/about_me"}>بیشتر بخوانید...</Link></p>
+              <p className="mr-[1rem] text-blue-400 text-center"><Link href={"/about_me"} title="درباره ما" aria-label="درباره ما">درباره ما بیشتر بخوانید ...</Link></p>
 
             </div>
 
@@ -67,7 +67,7 @@ function Footer() {
 
             <div className='w-full lg:mr-[6rem] mr-[unset] text-center leading-5 lg:leading-8 mt-3 font-v-light text-[15px] lg:text-[20px] text-black lg:text-white'>
 
-              <div className='flex justify-start items-center flex-row'>
+              <div title="ادرس فروشگاه" aria-label="ادرس فروشگاه" className='flex justify-start items-center flex-row'>
                 <span className='ml-[1rem]'>
                   <IoLocation className='lg:text-[1.5rem] text-[1rem]' />
                 </span>
@@ -77,7 +77,7 @@ function Footer() {
                 </p>
               </div>
 
-              <div className='flex justify-start items-center flex-row'>
+              <div title="تلفن ثابت" aria-label="تلفن ثابت" className='flex justify-start items-center flex-row'>
                 <span className='ml-[1rem]'>
                   <GiRotaryPhone className='lg:text-[1.5rem] text-[1rem]' />
                 </span>
@@ -88,7 +88,7 @@ function Footer() {
                 </p>
               </div>
 
-              <div className='flex justify-start items-center flex-row'>
+              <div title="تلفن همراه" aria-label="تلفن همراه" className='flex justify-start items-center flex-row'>
                 <span className='ml-[1rem]'>
                   <FaPhoneAlt className='lg:text-[1.5rem] text-[1rem]' />
                 </span>
@@ -105,10 +105,10 @@ function Footer() {
 
 
           <div className='whitespace-pre-wrap lg:w-1/4 w-full p-[5px] flex justify-center lg:items-center items-end flex-row lg:flex-col lg:mt-0 mt-[30px]'>
-            <Link href={"/select-unit-suit"}>
+            <Link href={"/select-unit-suit"} title="صفحه سفاش شخصی" aria-label="صفحه سفاش شخصی">
               <button className='font-v-light border whitespace-nowrap lg:w-[220px] lg:h-[45px] w-[153px] h-[40px] font-bold  transition-all duration-200 p-[8px] bg-[--them1] hover:bg-[--them2] text-[--them2] hover:text-black rounded-xl'>شخصی درزی</button>
             </Link>
-            <Link href={"/product-page"}>
+            <Link href={"/product-page"} title="رفتن به فروشگاه" aria-label="رفتن به فروشگاه">
             <button className='font-v-light border whitespace-nowrap lg:w-[220px] lg:h-[45px] w-[153px] h-[40px] font-bold  transition-all duration-200 p-[8px] bg-[--them2] hover:bg-[--them1] text-black hover:text-[--them2] rounded-xl mr-4 lg:mr-[unset] lg:mt-[1rem]'> فروشگاه </button>
             </Link>
 
@@ -124,27 +124,27 @@ function Footer() {
             <div className='grid grid-cols-2 grid-rows-2 gap-2 lg:flex lg:justify-around lg:items-center lg:flex-row lg:mt-[20px] mt-[unset] mr-6 lg:mr-[unset] w-[50%] lg:w-[unset]'>
 
               <div className='lg:mr-[20px] flex justify-center items-center'>
-                <span className="cursor-pointer">
+                <Link href={""} title="لوکیشن فروشگاه" aria-label="لوکیشن فروشگاه" className="cursor-pointer">
                   <MdOutlineLocationOn className="text-[3rem]" />
-                </span>
+                </Link>
               </div>
 
               <div className='lg:mr-[20px] flex justify-center items-center'>
-                <span className="cursor-pointer">
+                <Link href={""} title="ایمیل فروشگاه" aria-label="ایمیل فروشگاه" className="cursor-pointer">
                   <CiMail className="text-[3rem]" />
-                </span>
+                </Link>
               </div>
 
               <div className='lg:mr-[20px] flex justify-center items-center'>
-                <span className="cursor-pointer">
+                <Link href={""} title="ادرس تلگرام" aria-label="ادرس تلگرام" className="cursor-pointer">
                   <PiTelegramLogo className="text-[3rem]" />
-                </span>
+                </Link>
               </div>
 
               <div className='lg:mr-[20px] flex justify-center items-center'>
-                <span className="cursor-pointer">
+                <Link href={""} title="ادرس ایستاگرام" aria-label="ادرس ایستاگرام" className="cursor-pointer">
                   <FaInstagram className="text-[3rem]" />
-                </span>
+                </Link>
               </div>
 
             </div>

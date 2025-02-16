@@ -67,7 +67,7 @@ function Loginpage() {
                 <div className='border lg:w-[30rem] w-[20rem] h-[20rem] flex justify-center items-center flex-col mt-[2rem] rounded-xl bg-[--them3] shadow-lg'>
                     <form onSubmit={formik.handleSubmit} onReset={formik.handleReset} className='flex justify-center items-center flex-col'>
 
-                        <div className='flex justify-between items-center lg:w-[17rem] w-[16rem] mt-[2rem]'>
+                        <div className='flex justify-between items-center lg:w-[18rem] w-[16rem] mt-[2rem]'>
                             <label htmlFor='username' className=' lg:text-[1rem] text-[0.9rem] font-v-light'>نام کاربری : </label>
                             <input {...formik.getFieldProps('username')} className={`border-2 ${formik.touched.username && formik.errors.username ? "border-red-600 placeholder:text-[--them5] placeholder:text-[0.7rem] indent-1" : "placeholder:text-[0.9rem] indent-1"} rounded-lg shadow-md outline-none`} id='username' type="text" placeholder={`${formik.touched.username && formik.errors.username ? formik.errors.username : "نام کاربری "}`} />
                         </div>

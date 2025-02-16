@@ -56,7 +56,7 @@ function Priceoffproduct_productpage(props: any) {
             }
         }).then((vlaue) => {
             // console.log(vlaue.data.value_result)
-            setproduct(vlaue.data.value_result.slice(0, 7))
+            setproduct(vlaue.data.value_result?.slice(0, 7))
         })
     }, [setproduct])
 
@@ -93,7 +93,7 @@ function Priceoffproduct_productpage(props: any) {
 
 
                 {
-                    products.map((product) => {
+                    products?.map((product) => {
 
                         return (
                             <SwiperSlide key={product.id}>
@@ -102,7 +102,7 @@ function Priceoffproduct_productpage(props: any) {
 
                                         <Link href={`product-page/${product.id}`}>
                                             <div className="w-full lg:h-[23.7rem] h-[16rem]">
-                                                <Image className="lg:!w-full !w-full lg:!h-[23.7rem] !h-[16rem]" src={`/img/upload_img/${product.uploadfile.split(',')[0]}`} width={100} height={100} alt="image product" />
+                                                <Image className="lg:!w-full !w-full lg:!h-[23.7rem] !h-[16rem]" src={`/img/upload_img/${product.uploadfile.split(',')[0]}`} placeholder='blur' priority={false} width={100} height={100} alt={`یک عکس از محصولات خیاطی سعید برای فروش ${product.uploadfile.split(',')[0]}`} title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
                                             </div>
                                         </Link>
                                         <div className="w-full flex justify-center items-right flex-col px-[1rem] mt-[2rem]">
@@ -137,7 +137,7 @@ function Priceoffproduct_productpage(props: any) {
                             </SwiperSlide>
                         )
                     }
-                    )
+                    )?? <h1 className="text-red-600 translate-x-[-25%] lg:translate-x-[-50%]">درحال حاضر محصولی وجود ندارد</h1>
                 }
 
 

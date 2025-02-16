@@ -1,7 +1,8 @@
 const { query_DB } = require("./index")
 require('dotenv').config();
 const mysqul = require("mysql2/promise")
-class All_create_dependencis_class {
+
+class All_create_dependencis_class { 
     static #pool;
     static Getconnection = async () => {
         if (!All_create_dependencis_class.#pool) {

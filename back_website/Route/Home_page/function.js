@@ -8,9 +8,9 @@ const validation_GET_method = (req, res, next) => {
 
 
 const func_Home = (req, res) => {
-    return res.redirect("http://192.168.1.106:3000/")
+    return res.redirect("http://localhost:3000/")
 }
- 
+  
 module.exports = {
     func_Home,
     validation_GET_method

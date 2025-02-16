@@ -4,12 +4,20 @@ import { FaPhoneAlt } from 'react-icons/fa';
 import { GiRotaryPhone } from 'react-icons/gi';
 import { IoLocation } from 'react-icons/io5';
 
+
+// import Image 
+import Image_1 from "@/public/img/about/1.jpg"
+import Image_2 from "@/public/img/about/2.jpg" //not used
+import Image_3 from "@/public/img/about/3.jpg"
+import Image_4 from "@/public/img/about/4.jpg"
+
+
 // Define a functional component
 const Article = () => {
 
     return (
         <div className='container m-auto lg:leading-9 leading-7 px-5'>
-            <Image className='lg:!w-full lg:!h-[40rem]' src={"/img/about/1.jpg"} width={500} height={500} alt='first_picture_about_page' />
+            <Image className='lg:!w-full lg:!h-[40rem]' src={Image_1} placeholder='blur' priority={false} width={500} height={500} alt='دو مرد باکت و کروات مشکی که در مکانی به اطراف نگاه میکنند' title="خیاطی سعید با برند art_man_class بهترین تولید کننده کت وشلوار بازاری و شخصی دوزی"/>
             <h1 className='lg:text-[1.5rem] text-[1rem] font-v-medium text-center mt-[5rem]'>Art Man Class: خیاطی سعید، پنجاه سال تجربه در خلق اصالت و ظرافت</h1>
             <p className='lg:text-[1rem] text-[0.8rem] font-v-light mt-[1rem] text-center'>
                 در گذرگاه پرشتاب زمان که مد روز به سرعت دگرگون می‌شود، Art Man Class، برند شناخته شده خیاطی سعید،
@@ -17,7 +25,7 @@ const Article = () => {
                 در مسیر خلق آثاری فاخر و اصیل گام برمی‌دارد و به یاری هنر بی‌بدیل خیاطان چیره دست خود،
                 جامه‌ای برازنده بر تن مردان خوش‌ذوق می‌آراید.
             </p>
-
+ 
             <div className='flex justify-center items-start flex-col lg:flex-row mt-[5rem]'>
                 <div className='lg:w-[60%]'>
                     <h2 className='lg:text-[1.5rem] text-[1rem] font-v-medium text-center'>ما در Art Man Class به دنبال چه چیزی هستیم؟</h2>
@@ -104,8 +112,8 @@ const Article = () => {
                     </ul>
                 </div>
                 <div className='lg:w-[40%] relative'>
-                    <Image className='lg:hidden block mt-[2rem] lg:mt-[unset]' src={"/img/about/3.jpg"} width={500} height={500} alt='picture_about'/>
-                    <Image className='lg:block hidden !h-[70rem]' src={"/img/about/4.jpg"} width={500} height={500} alt='picture_about'/>
+                    <Image className='lg:hidden block mt-[2rem] lg:mt-[unset]' src={Image_3} placeholder='blur' priority={false} width={500} height={500} alt='یک مرد سیاه پوست با کت وشلوار ابی و کفش مشکی در حال پایین امد از راه پله' title="خیاطی سعید با برند art_man_class بهترین تولید کننده کت وشلوار بازاری و شخصی دوزی"/>
+                    <Image className='lg:block hidden !h-[70rem]' src={Image_4} placeholder='blur' priority={false} width={500} height={500} alt='یک مرد خوش هیکل با کت وشلوار خاکستری که در حال پیاده روی در خیابان هست' title="خیاطی سعید با برند art_man_class بهترین تولید کننده کت وشلوار بازاری و شخصی دوزی"/>
                 </div>
 
             </div>

@@ -1,29 +1,37 @@
-import Ferstslider from "@/public/component/home_page/ferst-slider"
+// import Ferstslider from "@/public/component/home_page/ferst-slider"
 import Image from "next/image"
 import Link from "next/link"
 import Neewproductslide from "@/public/component/home_page/neew-product-slide"
 import { CiPlay1 } from "react-icons/ci"
-import { IoMdClose } from "react-icons/io"
-import { useRef } from "react"
-import * as home_page from "@/public/js/home_page"
+import { useState,useRef } from "react"
+import dynamic from "next/dynamic"
 
-   
+
+// import image 
+import Image_video from "@/public/img/home_page/13.jpg"
+import Image_article_1 from "@/public/img/article/2.jpg"
+import Image_article_2 from "@/public/img/article/8.jpg"
+import Image_article_3 from "@/public/img/article/10.jpg"
+
+
+const VideoComponent = dynamic(() => import('../public/component/home_page/first_video'), {
+  loading: () => <p className="text-center">در حال بارگذاری ویدیو...</p>, // نمایش متن لودینگ
+  ssr: false // غیرفعال کردن SSR برای این کامپوننت (فقط در کلاینت اجرا شود)
+});
+
+const First_slider=dynamic(()=>import("@/public/component/home_page/ferst-slider"),{
+  loading:()=><p className="text-center">در حال بارگذاری ویدیو...</p>, // نمایش متن لودینگ
+  ssr:false
+})
 
 export default function HomePage() {
 
-  const showandhiddenelment = useRef(null);
-  const vedio_tag = useRef(null);
-  const openboxvedio = () => {
-    home_page.open_box_element(showandhiddenelment)
-  }
-  const close_box_vedio = () => {
-    home_page.close_box_element(showandhiddenelment, vedio_tag)
-  }
 
+  const [showVideo, setShowVideo] = useState(false);
 
   return (
     <>
-      <Ferstslider />
+      <First_slider />
       <div className="relative container ml-auto overflow-hidden mr-auto mb-auto -mt-[5rem] lg:mt-[10rem] ">
         {/* video and text section  */}
         <div className="flex justify-center items-center flex-col-reverse lg:flex-row px-10">
@@ -45,18 +53,17 @@ export default function HomePage() {
               <div className="absolute lg:w-[500px] w-[300px] lg:h-[500px]  bg-[--them3] rounded-2xl blur-sm -rotate-[8deg]"></div>
               <div className="absolute lg:w-[500px] w-[300px] lg:h-[500px]  bg-[--them3] rounded-2xl blur-sm -rotate-[25deg]"></div>
               <div className="absolute lg:w-[500px] w-[300px] h-auto bg-[--them3] rounded-2xl overflow-hidden flex justify-center items-center">
-                <Image className="blur-[1.1px]"   src={"/img/home_page/13.jpg"} width={500} height={500} alt={""} />
+                <Image className="blur-[1.1px]" placeholder="blur" priority={false} src={Image_video} width={500} height={500} alt={"یک کت خاکستری روی مانکن باکروات قهوه ای کم رنگ"} title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
 
                 <div className="w-[4rem] h-[4rem] animate-ping rounded-[5rem] bg-[--them3] opacity-80 absolute flex justify-center items-center ">
                   <CiPlay1 className="text-[2rem] " />
                 </div>
 
                 <div className="w-[4rem] h-[4rem] rounded-[5rem] bg-[--them3] opacity-80 absolute flex justify-center items-center ">
-                  <button onClick={openboxvedio}>
-                    <CiPlay1 className="text-[1.5rem] " />
+                  <button >
+                    <CiPlay1 onClick={() => setShowVideo(true)} className="text-[1.5rem] " />
                   </button>
                 </div>
-
 
               </div>
             </div>
@@ -64,17 +71,10 @@ export default function HomePage() {
 
         </div>
 
-        {/* open box vedio  */}
-        <div ref={showandhiddenelment} className="hidden fixed top-[10rem] lg:left-[10rem] z-[100] rounded-xl bg-[--them3] container m-auto border lg:w-[50rem] lg:h-[29rem] w-[23rem] h-[13rem] overflow-hidden">
-          <div className=" flex justify-end items-center">
-            <IoMdClose onClick={close_box_vedio} className="ml-2 mt-1 text-[1.5rem] cursor-pointer" />
-          </div>
-          <div className="">
-            <video ref={vedio_tag} controls loop className="lg:w-[50rem] lg:h-[29rem] w-[23rem] h-[13rem]">
-              <source src="/img/home_page/vedio/1.mp4" />
-            </video>
-          </div>
-        </div>
+
+      {/* نمایش ویدیو فقط زمانی که کاربر روی دکمه کلیک کند */}
+      {showVideo && <VideoComponent closeVideo={() => setShowVideo(false)} />}
+
 
       </div>
 
@@ -85,7 +85,7 @@ export default function HomePage() {
 
           {/* image section  */}
           <div className="">
-            <Image className="lg:!w-[20rem] !w-[20rem] !h-[20rem] lg:!h-[15rem]" src={"/img/article/2.jpg"} width={300} height={300} alt="" />
+            <Image className="lg:!w-[20rem] !w-[20rem] !h-[20rem] lg:!h-[15rem]" src={Image_article_1} priority={false} placeholder="blur" width={300} height={300} alt="یک کت وشلوار مشکی که روی مانکن هست و کنار ان یک گلدان با گل سفید هست" title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری وشخصی دوزی"/>
           </div>
 
           {/* text section  */}
@@ -108,7 +108,7 @@ export default function HomePage() {
 
           {/* image section  */}
           <div className="">
-            <Image className="lg:!w-[25rem] ! w-[20rem] lg:!h-[15rem]" src={"/img/article/8.jpg"} width={300} height={300} alt="" />
+            <Image className="lg:!w-[25rem] ! w-[20rem] lg:!h-[15rem]" src={Image_article_2} priority={false} placeholder="blur" width={300} height={300} alt="یک عکس از مرد که فقط از گردن به پایین داخل عکس هست و یک کت وشلوار مشکی پوشیده وبادست خود لبه استن کت خود را گرفته است" title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری وشخصی دوزی"/>
           </div>
 
           {/* text section  */}
@@ -130,7 +130,7 @@ export default function HomePage() {
 
           {/* image section  */}
           <div className="">
-            <Image className="lg:!w-[20rem] ! w-[20rem] lg:!h-[15rem]" src={"/img/article/10.jpg"} width={300} height={300} alt="" />
+            <Image className="lg:!w-[20rem] ! w-[20rem] lg:!h-[15rem]" src={Image_article_3} priority={false} placeholder="blur" width={300} height={300} alt="سه مرد با کت وشلوار ابی که یک گل سرخ داخل جیت جلوی کت انها است" title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری وشخصی دوزی"/>
           </div>
 
           {/* text section  */}
@@ -143,6 +143,7 @@ export default function HomePage() {
         </div>
 
       </div>
+
 
       {/* slider new product  */}
       <div className="container mr-auto ml-auto mb-auto mt-[10rem]">
@@ -163,6 +164,8 @@ export default function HomePage() {
         <br /><br />
         <Neewproductslide />
       </div>
+
+
 
       {/* text end website */}
       <div className="container m-auto flex justify-center items-center flex-col mt-[10rem] lg:leading-9 leading-6">

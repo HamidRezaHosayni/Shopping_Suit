@@ -71,22 +71,22 @@ function Rgester() {
             <div className='border lg:w-[35rem] w-[20rem] h-[25rem] flex justify-center items-center flex-col mt-[2rem] rounded-xl bg-[--them3] shadow-lg'>
                 <form onSubmit={formik.handleSubmit} onReset={formik.handleReset} className='flex justify-center items-center flex-col'>
 
-                    <div className='flex justify-between items-center lg:w-[17rem] w-[16rem] mt-[2rem]'>
+                    <div className='flex justify-between items-center lg:w-[18rem] w-[16rem] mt-[2rem]'>
                         <label htmlFor='username' className=' lg:text-[1rem] text-[0.9rem] font-v-light'>نام کاربری : </label>
                         <input {...formik.getFieldProps("username")} className={`border-2 outline-none ${formik.touched.username && formik.errors.username ? "border-red-600 placeholder:text-[--them5] placeholder:text-[0.7rem] indent-1" : "placeholder:text-[0.9rem] indent-1"} rounded-lg shadow-md`} id='username' type="text" placeholder={`${formik.touched.username && formik.errors.username ? formik.errors.username : "نام کاربری "}`} />
                     </div>
 
-                    <div className='flex justify-between items-center lg:w-[17rem] w-[16rem] mt-[2rem]'>
+                    <div className='flex justify-between items-center lg:w-[18rem] w-[16rem] mt-[2rem]'>
                         <label htmlFor='password' className=' lg:text-[1rem] text-[0.9rem] font-v-light'> پسورد : </label>
                         <input {...formik.getFieldProps("password")} className={`border-2 outline-none ${formik.touched.password && formik.errors.password ? "border-red-600 placeholder:text-[--them5] placeholder:text-[0.7rem] indent-1" : "placeholder:text-[0.9rem] indent-1"} rounded-lg shadow-md`} type="password" id='password' placeholder={`${formik.touched.password && formik.errors.password ? formik.errors.password : "پسورد"}`} />
                     </div>
 
-                    <div className='flex justify-between items-center lg:w-[17rem] w-[16rem] mt-[2rem]'>
+                    <div className='flex justify-between items-center lg:w-[18rem] w-[16rem] mt-[2rem] whitespace-nowrap'>
                         <label htmlFor='phonenumber' className=' lg:text-[1rem] text-[0.9rem] font-v-light'> تلفن همراه : </label>
                         <input {...formik.getFieldProps("phonenumber")} className={`border-2 outline-none ${formik.touched.phonenumber && formik.errors.phonenumber ? "border-red-600 placeholder:text-[--them5] placeholder:text-[0.7rem] indent-1" : "placeholder:text-[0.9rem] indent-1"} rounded-lg shadow-md`} type="text" id='phonenumber' placeholder={`${formik.touched.phonenumber && formik.errors.phonenumber ? formik.errors.phonenumber : "تلفن همراه"}`} />
                     </div>
 
-                    <div className='flex justify-between items-center lg:w-[17rem] w-[16rem] mt-[2rem]'>
+                    <div className='flex justify-between items-center lg:w-[18rem] w-[16rem] mt-[2rem]'>
                         <label htmlFor='email' className=' lg:text-[1rem] text-[0.9rem] font-v-light'> ایمیل :</label>
                         <input {...formik.getFieldProps("email")} className={`border-2 outline-none ${formik.touched.email && formik.errors.email ? "border-red-600 placeholder:text-[--them5] placeholder:text-[0.7rem] indent-1" : "placeholder:text-[0.9rem] indent-1"} rounded-lg shadow-md`} type="email" id='email' placeholder={`${formik.touched.email && formik.errors.email ? formik.errors.email : "ایمیل"}`} />
                     </div>

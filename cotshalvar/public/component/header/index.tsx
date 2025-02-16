@@ -80,22 +80,22 @@ function Header() {
           <ul ref={listmenu} className='lg:relative fixed lg:top-[unset] top-[3rem] right-0 flex justify-start lg:justify-between items-center flex-col lg:flex-row overflow-hidden transition-all duration-200 lg:w-[40%] lg:h-[unset] w-[0%] h-[90vh] lg:bg-none bg-[--them1]'>
 
             <li onClick={openmenu} className='lg:mt-0 mt-[20px] lg:p-0 p-[5px] lg:w-auto w-full lg:border-b-[0px] border-b-[2px] flex flex-col  lg:justify-start lg:items-start justify-center items-center group cursor-pointer'>
-              <span><Link href={"/"}>صفحه اصلی</Link></span>
+              <span><Link href={"/"} title="صفحه اصلی" >صفحه اصلی</Link></span>
               <span className="border-b-2 w-0 transition-all duration-400 ease-in-out group-hover:w-full border-[--them2]"></span>
             </li>
 
             <li onClick={openmenu} className='lg:mt-0 mt-[20px] lg:p-0 p-[5px] lg:w-auto w-full lg:border-b-[0px] border-b-[2px] flex flex-col  lg:justify-start lg:items-start justify-center items-center group cursor-pointer'>
-              <span><Link href={"/product-page"}>فروشگاه</Link></span>
+              <span><Link href={"/product-page"} title="فروشگاه">فروشگاه</Link></span>
               <span className="border-b-2 w-0 transition-all duration-400 ease-in-out group-hover:w-full border-[--them2]"></span>
             </li>
 
             <li onClick={openmenu} className='lg:mt-0 mt-[20px] lg:p-0 p-[5px] lg:w-auto w-full lg:border-b-[0px] border-b-[2px] flex flex-col  lg:justify-start lg:items-start justify-center items-center group cursor-pointer'>
-              <span><Link href={"/contact_me"}>ارتباط با ما</Link></span>
+              <span><Link href={"/contact_me"} title="ارتباط با ما">ارتباط با ما</Link></span>
               <span className="border-b-2 w-0 transition-all duration-400 ease-in-out group-hover:w-full border-[--them2]"></span>
             </li>
 
             <li onClick={openmenu} className='lg:mt-0 mt-[20px] lg:p-0 p-[5px] lg:w-auto w-full lg:border-b-[0px] border-b-[2px] flex flex-col  lg:justify-start lg:items-start justify-center items-center group cursor-pointer'>
-              <span><Link href={"/about_me"}> درباره ما</Link></span>
+              <span><Link href={"/about_me"} title="درباره ما"> درباره ما</Link></span>
               <span className="border-b-2 w-0 transition-all duration-400 ease-in-out group-hover:w-full border-[--them2]"></span>
             </li>
 
@@ -103,33 +103,33 @@ function Header() {
 
           <div className='flex justify-start items-center flex-row-reverse w-[40%] '>
 
-            <Link href={"/shopping_basket_page"} className='mr-[2rem]'>
+            <Link href={"/shopping_basket_page"} title="رفتن به سبد خرید" aria-label="رفتن به سبد خرید" className='mr-[2rem]'>
               <PiShoppingCart className='absolute cursor-pointer bottom-[1.5rem] lg:left-0 left-[10px] text-[2rem]' />
             </Link>
 
             {
-              is_Login ? <FaUserAlt onClick={open_and_close_dropdown_menu} className="text-[1.5rem] mb-[0.5rem] cursor-pointer" />
+              is_Login ? <FaUserAlt title="اطلاعات کاربر" aria-label="اطلاعات کاربر" onClick={open_and_close_dropdown_menu} className="text-[1.5rem] mb-[0.5rem] cursor-pointer" />
                 :
-                <Link href={"/Regester_user"}>
+                <Link href={"/Regester_user"} title="ورود ثبت نام" aria-label="ورود ثبت نام">
                   <button className='border-2 border-[--them2] p-[10px] rounded-lg transition-all duration-200 hover:bg-black whitespace-nowrap text-[11px] lg:text-[15px]'>ثبت نام / ورورد</button>
                 </Link>
             }
 
             <ul ref={open_user_dropdown} className="absolute left-0 top-[4rem] leading-9 bg-[--them1] w-[0rem] h-[0rem] flex justify-center items-center flex-col rounded-lg overflow-hidden transition-all duration-300 ease-in-out">
               <li onClick={open_and_close_dropdown_menu} className="border-b-[1px] cursor-pointer m-[5px] hover:text-[--them4] hover:bg-[--them2] w-full flex justify-center items-center">
-                <Link href={"/profile_user"} className="flex justify-start items-center">
+                <Link href={"/profile_user"} title="پروفایل کاربری" aria-label="پروفایل کاربری" className="flex justify-start items-center">
                   <span><FaUser /></span>
                   <span className="mr-[0.5rem] text-[0.8rem]">پروفایل کاربر</span>
                 </Link>
               </li>
               <li onClick={open_and_close_dropdown_menu} className="border-b-[1px] cursor-pointer m-[5px] hover:text-[--them4] hover:bg-[--them2] w-full flex justify-center items-center">
-                <Link href={""} className="flex justify-start items-center">
+                <Link href={""} title="محصولات خریداری شده" aria-label="محصولات خریداری شده" className="flex justify-start items-center">
                   <span><TbShoppingCartDollar /></span>
                   <span className="mr-[0.5rem] text-[0.8rem]">خریداری شده</span>
                 </Link>
               </li>
               <li onClick={open_and_close_dropdown_menu} className="border-b-[1px] lg:text-[1rem] text-[0.8rem] cursor-pointer m-[5px] hover:text-[--them4] hover:bg-[--them2] w-full flex justify-center items-center">
-                <Link href={"/introduce_product"} className="whitespace-nowrap lg:text-[1rem] text-[0.8rem] flex justify-start items-center flex-row">
+                <Link href={"/introduce_product"} title="علاقه مندی ها" aria-label="علاقه مندی های" className="whitespace-nowrap lg:text-[1rem] text-[0.8rem] flex justify-start items-center flex-row">
                   <span>
                     <FaHeart className="text-[1rem]" />
                   </span>
@@ -138,7 +138,7 @@ function Header() {
                   </span>
                 </Link>
               </li>
-              <li onClick={open_and_close_dropdown_menu} className="border-b-[0px] cursor-pointer m-[5px] hover:text-[--them4] hover:bg-[--them2] w-full flex justify-center items-center">
+              <li onClick={open_and_close_dropdown_menu} title="خروج کاربر" aria-label="خروج کاربر" className="border-b-[0px] cursor-pointer m-[5px] hover:text-[--them4] hover:bg-[--them2] w-full flex justify-center items-center">
                 <span onClick={Exit_Login} className="lg:text-[1rem] text-[0.8rem] font-v-light">خروج</span>
                 <span onClick={Exit_Login}><MdExitToApp className="lg:text-[1.7rem] mr-[0.5rem]" /></span>
               </li>
