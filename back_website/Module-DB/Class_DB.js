@@ -167,7 +167,7 @@ class Class_All_Query {
         const mm = create_ID_in_insert_Regester_Table(value)
         const tt = Object.values(value)
         tt.unshift(mm)
-        console.log(tt)
+        
         return Class_All_Query.query("INSERT INTO pant_order (id, ghad_shalvar, kamar_shalvar, andaza_basan, andaza_ran, andaza_zanoo, andaza_dampa, andaza_fagh) VALUE (?,?,?,?,?,?,?,?)", tt).then((value_insert_Regester_table) => {
             if (value_insert_Regester_table[0].fieldCount === 0) {
                 console.log("insert data pant_order tabale successfully ...!!!");
@@ -252,6 +252,19 @@ class Class_All_Query {
         }).catch((e) => { console.log("error excute qury select add_product Tabel : \n" + e) })
     }
 
+  
+    // select data in Add_product table for get one product
+    static SELECT_ADD_PRODUCT_TABALE_FOR_GET_ONE_PRODUCT = (value) => {
+        return Class_All_Query.query("SELECT * FROM add_product WHERE id=?",value).then((value_select_add_product_table) => {
+            if (value_select_add_product_table[0][0]) {
+                console.log("select table add_product for get one product form successfully...!!!")
+                return value_select_add_product_table[0];
+            }
+            else { console.log("error select add_product table. table is Empty") }
+        }).catch((e) => { console.log("error excute qury select add_product Tabel : \n" + e) })
+    }
+
+  
 
     static DELETE_DATA_IN_PROFILE_USER_TABLE = (value) => {
         return Class_All_Query.query("DELETE FROM profile_user WHERE id=? ", value).then((value_delete_profile_user) => {

@@ -28,7 +28,7 @@ export const open_comment = (value: any) => {
         value.current.classList.remove("lg:h-[0rem]")
     }
 
-
+ 
 }
 export const close_comment = (value: any) => {
     if (value.current.classList.contains("h-[23rem]") &&

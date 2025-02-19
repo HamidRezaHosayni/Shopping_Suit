@@ -42,8 +42,8 @@ export default function HomePage() {
             <p className="mt-[2rem] font-v-light lg:text-[1rem] text-[0.8rem] text-justify">خیاطی سعید یکی از معتبرترین فروشگاه های تولید کننده کت شلوار های سفارشی دوز ، سازمانی، شخصی دوز و … می باشد که بیش از 35 سال سابقه و با ارائه مشاوره رایگان و خیاطان مجرب میزبان هزاران مشتری از سراسر ایران می باشد و برای اولین بار سازکاری را ارئه داده است که کاربر به صورت انلاین کت شلوار شخصی متناسب با سایز خود را سفارش دهد. خیاطی سعید با ارسال سریع و به موقع، قیمت مناسب، مشاوره خرید و پشتیبانی در خدمت مشتریان از سراسر ایران است.</p>
             <p className="font-v-light lg:text-[1rem] text-[0.8rem] text-justify">خیاطی سعید تامین کننده و تولید کننده لباس و پوشاک رسمی مردانه، همگام با رقبای بزرگ صنعت پوشاک آقایان در عرضه مد و پوشاک جلو می رود تا مردان ایرانی به راحتی و بدون دغدغه از این فروشگاه معتبر کت و شلوار مورد نظر خود را تهیه نمایند. این برند با فراهم کردن عرضه کت و شلوار شخصی دوز، امکان خرید و سفارش را در سریع ترین زمان ممکن برای مشتریان فراهم کرده اند.</p>
             <div className="flex justify-center items-center mt-[2rem]">
-              <Link href={"/select-unit-suit"} className="border transition-all duration-300 ease-in-out bg-black text-[--them2] hover:bg-[--them2] hover:text-black p-[8px] lg:text-[1rem] text-[0.8rem] rounded-lg ml-5">شخصی دوزی</Link>
-              <Link href={"/product-page"}><button className="border transition-all duration-300 ease-in-out bg-black text-[--them2] hover:bg-[--them2] hover:text-black p-[8px] lg:text-[1rem] text-[0.8rem] rounded-lg">به فروشگاه ماسربزنید</button></Link>
+              <Link href={"/select-unit-suit"} title="ثبت سفارش به صورت شخصی" aria-label="ثبت سفارش به صورت شخصی" className="border transition-all duration-300 ease-in-out bg-black text-[--them2] hover:bg-[--them2] hover:text-black p-[8px] lg:text-[1rem] text-[0.8rem] rounded-lg ml-5">شخصی دوزی</Link>
+              <Link href={"/product-page"} title="رفتن به صفحه محصولات" aria-label="رفتن به صفحه محصولات"><button className="border transition-all duration-300 ease-in-out bg-black text-[--them2] hover:bg-[--them2] hover:text-black p-[8px] lg:text-[1rem] text-[0.8rem] rounded-lg">به فروشگاه ماسربزنید</button></Link>
             </div> 
           </div>
 
@@ -94,7 +94,7 @@ export default function HomePage() {
             <p className="font-v-light lg:text-[1rem] text-[0.8rem] text-justify mt-5">با توجه به گستردگی و تنوع دنیای مد و پوشاک، استایل و پوشش های زیادی برای مردان نیز وجود دارد. با این تفاسیر کت و شلوار یک استایل رسمی مردانه بوده که دست خوش تغییراتی در طول سالیان مختلف شده اما هرگز از کمد لباس مردان حذف نشده است.</p>
             <p className="font-v-light lg:text-[1rem] text-[0.8rem] text-justify">خرید کت و شلوار نیز برای مردان همیشه یک چالش است، به این دلیل که باید کت و شلواری را انتخاب نمایند که علاوه بر ظاهر زیبا با ساختار و فرم بدنی فرد نیز سازگار باشد. در این مقاله قصد داریم تا به محبوبیت و دوست داشتنی بودن کت و شلوار شخصی دوز بپردازیم که متناسب با تمام سلایق و فرم های بدنی محصول برای عرضه دارند.</p>
             <p className="font-v-light lg:text-[1rem] text-[0.8rem] text-justify inline">علاقمند هستید تا درباره خرید کت و شلوار شخصی دوز و سفارشی دوزی کت شلوار مردانه از خیاطی سعید بیشتر بدانید، پیشنهاد ما این است که با ما همراه باشید و این مطلب را تا انتها بخوانید.</p>
-            <Link href={"/article"} className="inline text-blue-600 mr-4">بیشتر بخوانید</Link>
+            <Link href={"/article"} title="درباره تفاوت کت وشلوار شخصی دوز با کت وشلوار بازاری بیشتر بخوانید" aria-label="درباره تفاوت کت وشلوار شخصی دوز با کت وشلوار بازاری بیشتر بخوانید" className="inline text-blue-600 mr-4">بیشتر بخوانید</Link>
           </div>
 
         </div>
@@ -116,7 +116,7 @@ export default function HomePage() {
             <h1 className="font-v-medium lg:text-[1.4rem] text-[1rem]">چند نکته در مورد کت و شلوار که هر مردی باید بداند</h1>
             <p className="font-v-light lg:text-[0.98rem] text-[0.8rem] text-justify mt-5">برای بسیاری از آقایان پوشیدن کت و شلوار و یا کت های تک ابهت خاصی در پی دارد. هم باعث می شود پخته تر به نظر برسند هم جدی تر. هنوز در سر تا سر جهان کت و شلوار به عنوان تنها یکه تاز لباس آقایان در مجالس رسمی با اختلاف در صدر انتخاب ها قرار دارد. </p>
             <p className="font-v-light lg:text-[0.98rem] text-[0.8rem] text-justify inline"> همین امر باعث شده استایل های مشابه نیز طرفداران زیادی داشته باشد. استفاده از کت تک و پالتو هایی که شاکله خود را از کت و های رسمی به عاریت گرفتند نیز همه جای دنیا طرفداران خاص خودش را دارد. در این مقاله به چند نکته خواهیم پرداخت که اگر در مورد کت و شلوار بدانید همه چیز خیلی جذاب تر پیش می رود.</p>
-            <Link className=" inline mr-[1rem] text-blue-600 lg:text-[1rem] text-[0.8rem]" href={"/article/tow_Article"}>بیشتر بخوانید</Link>
+            <Link className=" inline mr-[1rem] text-blue-600 lg:text-[1rem] text-[0.8rem]" href={"/article/tow_Article"} title="نکته هایی درباره کت وشلوار مردانه" aria-label="نکته هایی درباره کت وشلوار مردانه">بیشتر بخوانید</Link>
           </div>
 
         </div>
@@ -137,7 +137,7 @@ export default function HomePage() {
           <div className="lg:w-[55rem] w-[20rem] lg:mr-[1rem] lg:mt-[unset] mt-[2rem] px-[1.1rem] whitespace-pre-wrap">
             <h1 className="font-v-medium lg:text-[1.4rem] text-[1rem]">همه چیز درباره کت شلوار مردانه </h1>
             <p className="font-v-light lg:text-[1rem] text-[0.8rem] text-justify mt-5">کت شلوار مردانه در زمان حضور آقایان در مجالس رسمی در اولویت انتخاب آنها قرار داشته و در سراسر دنیا طرفداران بسیار زیادی دارد. برخی افراد با تصورات اشتباه خود در این زمینه گمان می کنند که این نوع پوشش تنها در مکان های رسمی کاربرد دارد حال آن که آقایان می توانند با انتخاب مناسب در تمامی مکان ها و مجالس از این نوع پوشش استفاده نمایند.</p>
-            <Link href={"/article/three_Article"} className="mt-[1rem] text-blue-600 inline-block">بیشتر بخوانید</Link>
+            <Link href={"/article/three_Article"} title="همه چیز درباره کت وشلوار مردانه" aria-label="همه چیز درباره کت وشلوار مردانه" className="mt-[1rem] text-blue-600 inline-block">بیشتر بخوانید</Link>
           </div>
 
         </div>
@@ -155,7 +155,7 @@ export default function HomePage() {
           </div>
 
           <div>
-            <Link href={"/product-page"}>
+            <Link href={"/product-page"} title="رفتن به صفحه محصولات" aria-label="رفتن به صفحه محصولات">
               <p className="text-[--them5] font-v-light lg:text-[1.2rem] text-[1rem]">مشاهده بیشتر</p>
             </Link>
           </div>
@@ -175,7 +175,7 @@ export default function HomePage() {
         <div className="w-[80%] flex justify-center items-center flex-col">
           <p className="text-[1rem] text-center font-v-light mt-[1rem]">خیاطی سعید با نام برند Art man class  سال ها در زمنیه دوخت کت وشلوار با بیش از 35 سال سابقه کار در این زمینه اماده خدمت رسانی به شما مردم عزیز بوده است .  و برای اولین بار ساز کاری را ارئه داده است تا کاربر بتواند بدون مراجعه حضوری سفارش خود را با اندازه شخصی خود ثبت کند و از امکانات کت و شلوار شخصی دوز بدون مراجه به شعبه ای بهرمند شوند.</p>
           <p className="text-[1rem] text-center font-v-light">برای این امر اموزش هایی برای شما عزیزان اماده شده است تا شما بتوانید به صورت شخصی کت و شلوار خود را سفارش دهید . </p>
-          <Link href={""} className="border mt-5 transition-all duration-300 ease-in-out bg-black text-[--them2] hover:bg-[--them2] hover:text-black p-[8px] lg:text-[1rem] text-[0.8rem] rounded-lg ml-5">اموزش برای اندازه گیری</Link>
+          <Link href={""} title="اموزش برای اندازه گیری محصول" className="border mt-5 transition-all duration-300 ease-in-out bg-black text-[--them2] hover:bg-[--them2] hover:text-black p-[8px] lg:text-[1rem] text-[0.8rem] rounded-lg ml-5">اموزش برای اندازه گیری</Link>
         </div>
       </div>
 

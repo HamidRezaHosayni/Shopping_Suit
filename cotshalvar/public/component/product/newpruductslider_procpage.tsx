@@ -101,7 +101,7 @@ function Newproductslider_procpage() {
 
                                         <Link href={`product-page/${product.id}`} >
                                             <div className="w-full lg:h-[23.7rem] h-[16rem]">
-                                                <Image className="lg:!w-full !w-full lg:!h-[23.7rem] !h-[16rem]" src={`/img/upload_img/${product.uploadfile.split(',')[0]}`} placeholder='blur' priority={false} width={100} height={100} alt={`یک عکس از محصولات خیاطی سعید برای فروش ${product.uploadfile.split(',')[0]}`} title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی" />
+                                                <Image className="lg:!w-full !w-full lg:!h-[23.7rem] !h-[16rem]" src={`/img/upload_img/${product.uploadfile.split(',')[0]}`}  priority={false} width={100} height={100} alt={`یک عکس از محصولات خیاطی سعید برای فروش ${product.uploadfile.split(',')[0]}`} title={product.name_product} />
                                             </div>
                                         </Link>
 

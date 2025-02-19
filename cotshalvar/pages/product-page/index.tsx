@@ -60,7 +60,7 @@ function Product() {
 
 
       {/* slider price off product  */}
-      <div className="container mr-auto ml-auto mb-auto mt-[10rem]">
+      <div className="container mr-auto ml-auto mb-auto lg:mt-[30vh]">
 
         <div className="flex justify-between items-center flex-row lg:px-[unset] px-[1rem]">
           <div className="flex justify-start items-center flex-row">
@@ -111,11 +111,11 @@ function Product() {
             return (
 
               <div key={index} className="mt-[1rem]">
-                <div className="lg:w-[16rem] md:w-[15rem] w-[12rem] lg:h-[33rem] border rounded-xl overflow-hidden">
+                <div className="lg:w-[24rem] md:w-[15rem] w-[12rem] lg:h-[33rem] border rounded-xl overflow-hidden">
 
                   <Link href={`product-page/${product.id}`}>
                     <div className="w-full lg:h-[23.7rem] h-[16rem]">
-                      <Image className="lg:!w-full !w-full lg:!h-[23.7rem] !h-[16rem]" src={`/img/upload_img/${product.uploadfile.split(',')[0]}`} width={100} height={100} alt="image product" />
+                      <Image className="lg:!w-full !w-full lg:!h-[23.7rem] !h-[16rem]" src={`/img/upload_img/${product.uploadfile.split(',')[0]}`} width={100} height={100} title={`${product.name_product}`} alt={`${product.name_product}`} />
                     </div>
                   </Link>
                   <div className="w-full flex justify-center items-right flex-col px-[1rem] mt-[2rem]">

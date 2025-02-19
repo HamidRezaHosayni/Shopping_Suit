@@ -101,7 +101,7 @@ function Neewproductslide() {
 
                                         <Link href={`product-page/${product.id}`}>
                                             <div className="w-full lg:h-[23.7rem] h-[16rem]">
-                                                <Image className="lg:!w-full !w-full lg:!h-[23.7rem] !h-[16rem]" placeholder='blur' priority={false} src={`/img/upload_img/${product.uploadfile.split(',')[0]}`} width={100} height={100} alt={` عکس محصولات برای وب سایت art_man_class ${product.uploadfile.split(',')[0]}`} title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری وشخصی دوزی"/>
+                                                <Image className="lg:!w-full !w-full lg:!h-[23.7rem] !h-[16rem]" priority={false} src={`/img/upload_img/${product.uploadfile.split(',')[0]}`} width={100} height={100} alt={` عکس محصولات برای وب سایت art_man_class ${product.uploadfile.split(',')[0]}`} title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری وشخصی دوزی"/>
                                             </div>
                                         </Link>
                                         <div className="w-full flex justify-center items-right flex-col px-[1rem] mt-[2rem]">

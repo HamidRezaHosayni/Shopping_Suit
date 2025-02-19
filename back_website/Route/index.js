@@ -18,6 +18,7 @@ const Route_introduce_shopping_westbsket = require("./Route_introduce_product_sh
 const Route_contact_me = require("./contact_me/index");
 const Route_profile_user=require('./Route_profile_user/index')
 const Route_payment_product=require("./Route_payment_product/index")
+const Route_get_one_product=require("./Route_get_one_product/get_one_product")
 
 All_Route.use(Home_page)
 All_Route.use(Regester_Page)
@@ -33,6 +34,6 @@ All_Route.use(Route_introduce_shopping_westbsket)
 All_Route.use(Route_contact_me)
 All_Route.use(Route_profile_user)
 All_Route.use(Route_payment_product)
-
+All_Route.use(Route_get_one_product) 
 
 module.exports = All_Route; 

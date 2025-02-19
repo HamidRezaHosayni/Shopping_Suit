@@ -1,6 +1,6 @@
 import * as product_dropdown from "@/public/js/product_page_dropdown"
 import Sider_cell_product_page from "@/public/component/product_page/slider_cell_product_page"
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState , useEffect} from 'react'
 import { CiHeart } from 'react-icons/ci'
 import { HiPlusSm } from 'react-icons/hi'
 import { IoIosArrowDown } from "react-icons/io";
@@ -9,11 +9,35 @@ import { FaCommentMedical, FaHeart } from "react-icons/fa6"
 import { IoClose } from "react-icons/io5"
 import { useSelector } from "react-redux"
 import Link from "next/link"
+import { useRouter } from "next/router"
+import axios from 'axios'
 
+ 
+// shopping_westbasket
 function Cell_product_page() {
+
+
+
+// get size product 
+const [selectedSize, setSelectedSize] = useState("");
+    const handleSizeChange = (event:any) => {
+        setSelectedSize(event.target.value);
+        console.log("Selected size:", event.target.value);
+    };
+
+// get id product 
+const router = useRouter();
+const id= router.query;
+
+// state for count product 
+const [count_product,set_count_product]=useState(1)
 
   // heart prosuct 
   const [heartchange, setheartchange] = useState(false)
+
+  // info product 
+  const [info_product,set_info_product]=useState<any>({})
+console.log(info_product)
 
   // dorpdown function 
   const dropdownproductpage = useRef(null);
@@ -31,6 +55,39 @@ function Cell_product_page() {
   }
 
   const is_Login = useSelector((state: any) => state.is_Login.is_Login)
+
+
+  useEffect(() => {
+    axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/get_one_product`,id,{
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": window.localStorage.getItem("Token_validation")
+      }
+    }).then((vlaue) => {
+      set_info_product(vlaue.data.info_product[0])
+    }).catch((e) => { 
+
+      console.log(e)
+
+     })
+
+  }, [])
+
+
+
+  const plus_shopping_westbasket=()=>{
+    const westbasget_localstorage= window.localStorage.getItem("shopping_westbasket")
+    if(westbasget_localstorage){
+      const All_west_basket=[...JSON.parse(westbasget_localstorage),info_product.id]
+      window.localStorage.setItem("shopping_westbasket",JSON.stringify(All_west_basket))
+      console.log([...JSON.parse(westbasget_localstorage),info_product.id])
+    }else{
+      window.localStorage.setItem("shopping_westbasket",JSON.stringify([info_product.id]))
+    }
+   
+  
+  }
+
 
   return (
     <>
@@ -57,27 +114,38 @@ function Cell_product_page() {
                 {/* name product  */}
                 <div className="mt-[1rem]">
                   <span className="lg:text-[1rem] text-[0.8rem] font-v-medium">نام محصول : </span>
-                  <span className="lg:text-[1rem] text-[0.8rem] font-v-light">نام محصول</span>
+                  <span className="lg:text-[1rem] text-[0.8rem] font-v-light"> {info_product.name_product}</span>
+                </div>
+                {/* color product  */}
+                <div className="">
+                  <span className="lg:text-[1rem] text-[0.8rem] font-v-medium">رنگ محصول : </span>
+                  <span className="lg:text-[1rem] text-[0.8rem] font-v-light"> {info_product.color_suit}</span>
+                </div>
+
+                {/* fabric product  */}
+                <div className="">
+                  <span className="lg:text-[1rem] text-[0.8rem] font-v-medium">جنس محصول : </span>
+                  <span className="lg:text-[1rem] text-[0.8rem] font-v-light"> {info_product.fabric_material}</span>
                 </div>
                 {/* cell product  */}
 
                 <div>
                   <span className="lg:text-[1rem] text-[0.8rem] font-v-medium">قیمت محصول : </span>
-                  <span className="lg:text-[1rem] text-[0.8rem] font-v-light"> 2000000</span>
+                  <span className="lg:text-[1rem] text-[0.8rem] font-v-light"> {info_product.price_product}</span>
                 </div>
 
                 {/* count priduct  */}
                 <div className='flex justify-start items-center flex-row'>
                   <span className="lg:text-[1rem] text-[0.8rem] font-v-medium">تعداد محصول : </span>
-                  <span className='cursor-pointer ml-[0.5rem] mr-[1rem]'><HiPlusSm className="text-[1.4rem]" /></span>
-                  <span className='border px-[0.5rem] w-[2rem] h-[2rem] rounded-lg bg-[--them4] text-[--them2] flex justify-center items-center'>1</span>
-                  <span className='cursor-pointer mr-[0.5rem] pb-[0.6rem] p'><MdMinimize className="text-[1.4rem]" /></span>
+                  <span className='cursor-pointer ml-[0.5rem] mr-[1rem]'><HiPlusSm className="text-[1.4rem]" onClick={()=>set_count_product(count_product+1)}/></span>
+                  <span className='border px-[0.5rem] w-[2rem] h-[2rem] rounded-lg bg-[--them4] text-[--them2] flex justify-center items-center'>{count_product}</span>
+                  <span className='cursor-pointer mr-[0.5rem] pb-[0.6rem] p'><MdMinimize className="text-[1.4rem]" onClick={()=>{set_count_product(count_product-1); if(count_product==0){set_count_product(0)}}}/></span>
                 </div>
 
                 <div>
                   <label htmlFor="size" className="lg:text-[1rem] text-[0.8rem] font-v-medium">سایز محصول : </label>
 
-                  <select name="size" className="border w-[10rem] rounded-lg bg-[--them3]" id="cars">
+                  <select name="size" onChange={handleSizeChange} className="border w-[10rem] rounded-lg bg-[--them3]" id="suit">
                     <option value="42">42</option>
                     <option value="43">43</option>
                     <option value="44">44</option>
@@ -87,24 +155,27 @@ function Cell_product_page() {
 
                 {/* boutton coustom product and shopping product  */}
                 <div className='flex justify-start items-center flex-row mt-[3rem]'>
-                  <button className='lg:text-[1rem] text-[0.8rem] cursor-pointer px-[0.9rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] rounded-lg transition-all duration-300 ease-in-out'>شخصی سفارش دهید</button>
-                  <button className='cursor-pointer px-[0.9rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] rounded-lg transition-all duration-300 ease-in-out flex justify-center items-center flex-row mr-[1rem]'>
+
+                  <Link href={"/select-unit-suit"} title="کت وشلوار شخصی خود را سفارش بدهید" aria-label="کت وشلوار شخصی خود را سفارش بدهید" className='lg:text-[1rem] text-[0.8rem] cursor-pointer px-[0.9rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] rounded-lg transition-all duration-300 ease-in-out'>شخصی سفارش دهید</Link>
+
+                  <button title="افزودن به سبد خرید" onClick={plus_shopping_westbasket} className='cursor-pointer px-[0.9rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] rounded-lg transition-all duration-300 ease-in-out flex justify-center items-center flex-row mr-[1rem]'>
                     <span className="lg:text-[1rem] text-[0.8rem] ">افزودن به سبد خرید</span>
                     <span className='mr-[1rem]'><MdAddShoppingCart /></span>
                   </button>
+
                 </div>
 
                 {/* drop down element  */}
                 <div>
 
-                  <div ref={dropdownproductpage} onClick={drop_prosuct_cell} className='transition-all duration-300 ease-in-out whitespace-pre-wrap rounded-lg bg-[--them3] h-[4vh] overflow-hidden lg:w-3/4 w-full px-[1rem] flex justify-start items-center flex-col mt-[20px]'>
+                  <div ref={dropdownproductpage} title="توضیحات محصول" onClick={drop_prosuct_cell} className='transition-all duration-300 ease-in-out whitespace-pre-wrap rounded-lg bg-[--them3] h-[4vh] overflow-hidden lg:w-3/4 w-full px-[1rem] flex justify-start items-center flex-col mt-[20px]'>
 
                     <div className='w-full h-[4vh] flex justify-between items-center flex-row'>
                       <h2 className='text-right w-full text-[--them4] text-[15px] font-v-bold'>توضیحات محصول</h2>
                       <span className=''><IoIosArrowDown /></span>
                     </div>
 
-                    <p className='w-full text-center leading-5 lg:leading-8 mt-3 font-v-light text-[15px] text-[--them4]'>این یک متن ازمایشی است ازمایشی است این یک متن ازمایشی است این یک متن ازمایشی است این یک متن ازمایشی است ازمایشی است ...</p>
+                    <p className='w-full text-center leading-5 lg:leading-8 mt-3 font-v-light text-[15px] text-[--them4]'> {info_product.discription_product}</p>
 
                   </div>
 
