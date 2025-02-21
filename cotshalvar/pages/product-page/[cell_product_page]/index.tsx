@@ -32,14 +32,35 @@ const id= router.query;
 // state for count product 
 const [count_product,set_count_product]=useState(1)
 
-    const [heartchange,set_heartchange]=useState(false)
-  const introduce_product=()=>{
-    
-  }
-
+   
   // info product 
   const [info_product,set_info_product]=useState<any>({})
 console.log(info_product)
+
+ // action heart introduce 
+ const [heartchange,set_heartchange]=useState(true)
+ useEffect(()=>{
+   const introduce_product1:any= JSON.parse(window.localStorage.getItem("introduse_product")!)
+  introduce_product1?.find((value:any)=>info_product.id===value)?set_heartchange(true) : set_heartchange(false)
+
+ })
+ 
+ const introduce_product=()=>{
+   const introduce_product:any= JSON.parse(window.localStorage.getItem("introduse_product")!)
+   const mm=introduce_product?.find((value:any)=>info_product.id===value)
+   if (mm) {
+     set_heartchange(false);
+     // حذف آیتم از localStorage
+     const updatedIntroduceProduct = introduce_product.filter((value: any) => info_product.id !== value);
+     window.localStorage.setItem("introduse_product", JSON.stringify(updatedIntroduceProduct));
+ } else {
+     set_heartchange(true);
+     // اضافه کردن آیتم به localStorage
+     const updatedIntroduceProduct = introduce_product ? [...introduce_product, info_product.id] : [info_product.id];
+     window.localStorage.setItem("introduse_product", JSON.stringify(updatedIntroduceProduct));
+ }
+ }
+
 
   // dorpdown function 
   const dropdownproductpage = useRef(null);
@@ -77,14 +98,14 @@ console.log(info_product)
 
 
 
+  const count_and_size={...info_product,"size":selectedSize,"count":count_product}
   const plus_shopping_westbasket=()=>{
     const westbasget_localstorage= window.localStorage.getItem("shopping_westbasket")
     if(westbasget_localstorage){
-      const All_west_basket=[...JSON.parse(westbasget_localstorage),info_product]
+      const All_west_basket=[...JSON.parse(westbasget_localstorage),count_and_size]
       window.localStorage.setItem("shopping_westbasket",JSON.stringify(All_west_basket))
-      // console.log([...JSON.parse(westbasget_localstorage),info_product.id])
     }else{
-      window.localStorage.setItem("shopping_westbasket",JSON.stringify([info_product]))
+      window.localStorage.setItem("shopping_westbasket",JSON.stringify([count_and_size]))
     }
    
   
@@ -103,8 +124,8 @@ console.log(info_product)
               {/* heart icon  */}
               <div className="w-full flex justify-end items-center mt-[1rem]">
 
-                <div className="bg-[--them4] text-[--them2] w-[2rem] h-[2rem] cursor-pointer lg:ml-[5rem] flex justify-center items-center rounded-md">
-                  <span onClick={() => introduce_product}>
+                <div onClick={() => introduce_product()} className="bg-[--them4] text-[--them2] w-[2rem] h-[2rem] cursor-pointer lg:ml-[5rem] flex justify-center items-center rounded-md">
+                  <span >
                     {heartchange ? <FaHeart className="text-red-600" /> : <CiHeart className="text-[1.5rem]" />}
                   </span>
                 </div>
