@@ -26,7 +26,6 @@ function Product() {
 
   const state_product = useSelector((state: any) => state.Introduce_product.Introduce_product)
   const dispatch = useDispatch();
-
   const introduce_product = useRef<any>()
 
 

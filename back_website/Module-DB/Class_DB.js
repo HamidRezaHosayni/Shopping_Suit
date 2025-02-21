@@ -239,7 +239,7 @@ class Class_All_Query {
         }).catch((e) => { return console.log("insert excute query profile_user TABALE error : \n" + e) })
 
     }
-
+ 
 
     // select data in Add_product table for validation user 
     static SELECT_ADD_PRODUCT_TABALE = () => {

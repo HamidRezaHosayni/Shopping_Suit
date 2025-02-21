@@ -96,46 +96,47 @@ const Shopping_basket_page = () => {
     }
 
 
-    const shopping_wetbasket = (value1: any) => {
-        add_product_in_shopping_westbasket(value1);
-        const mm = All_product_westbasket.filter((value: any) => value.id !== value1);
-        set_All_product_westbasket(mm)
-        const totalPrice = mm.reduce((total: any, product: any) => {
-            return total + Number(product.price_product);
-        }, 0);
-        set_All_price_product1(totalPrice);
-    }
 
-    useEffect(() => {
-        console.log("shopping_westbacket 2")
+    useEffect(()=>{
 
         if (window.localStorage.getItem("shopping_westbasket")) {
+                const shopping_westbasket = JSON.parse(window.localStorage.getItem("shopping_westbasket")!);
+                
+                set_All_product_westbasket(shopping_westbasket)
 
-            const shopping_westbasket = JSON.parse(window.localStorage.getItem("shopping_westbasket")!);
-            axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/introduce_shopping_westbasket`, shopping_westbasket, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": window.localStorage.getItem("Token_validation")
-                }
-            }).then((value) => {
-                set_All_product_westbasket(value.data.value)
-                const totalPrice = value.data.value.reduce((total: any, product: any) => {
+                const totalPrice = shopping_westbasket.reduce((total: any, product: any) => {
                     return total + Number(product.price_product);
                 }, 0);
                 set_All_price_product1(totalPrice);
+            }
+    },[])
+    
 
-            }).catch((value) => {
-                if (value.response.status) {
-                    window.location.replace("http://localhost:3000/Login-user")
+        const remove_product=(value:any)=>{
+            if (window.localStorage.getItem("shopping_westbasket")) {
+                // دریافت لیست محصولات از localStorage
+                let shopping_westbasket = JSON.parse(window.localStorage.getItem("shopping_westbasket")!);
+        
+                // پیدا کردن محصول موردنظر برای حذف
+                const productToRemove = shopping_westbasket.find((item: any) => item.id === value);
+         
+                if (productToRemove) {
+                    // کم کردن مقدار price_product از set_All_price_product1
+                    set_All_price_product1(prevPrice => prevPrice - Number(productToRemove.price_product));
+        
+                    // حذف محصول از آرایه
+                    shopping_westbasket = shopping_westbasket.filter((item: any) => item.id !== value);
+        
+                    // ذخیره لیست جدید در localStorage
+                    window.localStorage.setItem("shopping_westbasket", JSON.stringify(shopping_westbasket));
+                    set_All_product_westbasket(shopping_westbasket)
+                    console.log("محصول حذف شد:", value);
+                } else {
+                    console.log("محصول موردنظر یافت نشد.");
                 }
-                else {
-                    return;
-                }
-            })
-
+            }
         }
 
-    }, [set_All_product_westbasket])
 
     useEffect(() => {
         console.log("shopping_westbacket 1")
@@ -445,7 +446,7 @@ const Shopping_basket_page = () => {
                                                         </div>
 
                                                         <div className="flex justify-start items-center flex-row ">
-                                                            <button onClick={() => { shopping_wetbasket(value.id) }} className='border shadow-lg lg:text-[0.8rem] text-[0.6rem] p-2 rounded-lg lg:mt-[1rem] lg:mr-[1rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] transition-all duration-300 ease-in-out'>حذف از سبد</button>
+                                                            <button onClick={()=>remove_product(value.id)} className='border shadow-lg lg:text-[0.8rem] text-[0.6rem] p-2 rounded-lg lg:mt-[1rem] lg:mr-[1rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] transition-all duration-300 ease-in-out'>حذف از سبد</button>
 
                                                         </div>
 

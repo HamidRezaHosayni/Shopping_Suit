@@ -32,8 +32,10 @@ const id= router.query;
 // state for count product 
 const [count_product,set_count_product]=useState(1)
 
-  // heart prosuct 
-  const [heartchange, setheartchange] = useState(false)
+    const [heartchange,set_heartchange]=useState(false)
+  const introduce_product=()=>{
+    
+  }
 
   // info product 
   const [info_product,set_info_product]=useState<any>({})
@@ -78,11 +80,11 @@ console.log(info_product)
   const plus_shopping_westbasket=()=>{
     const westbasget_localstorage= window.localStorage.getItem("shopping_westbasket")
     if(westbasget_localstorage){
-      const All_west_basket=[...JSON.parse(westbasget_localstorage),info_product.id]
+      const All_west_basket=[...JSON.parse(westbasget_localstorage),info_product]
       window.localStorage.setItem("shopping_westbasket",JSON.stringify(All_west_basket))
-      console.log([...JSON.parse(westbasget_localstorage),info_product.id])
+      // console.log([...JSON.parse(westbasget_localstorage),info_product.id])
     }else{
-      window.localStorage.setItem("shopping_westbasket",JSON.stringify([info_product.id]))
+      window.localStorage.setItem("shopping_westbasket",JSON.stringify([info_product]))
     }
    
   
@@ -102,9 +104,8 @@ console.log(info_product)
               <div className="w-full flex justify-end items-center mt-[1rem]">
 
                 <div className="bg-[--them4] text-[--them2] w-[2rem] h-[2rem] cursor-pointer lg:ml-[5rem] flex justify-center items-center rounded-md">
-                  <span onClick={() => setheartchange(!heartchange)}>
-                    {heartchange ? <CiHeart className="text-[1.5rem]" /> : <FaHeart className="text-red-600" />}
-
+                  <span onClick={() => introduce_product}>
+                    {heartchange ? <FaHeart className="text-red-600" /> : <CiHeart className="text-[1.5rem]" />}
                   </span>
                 </div>
 

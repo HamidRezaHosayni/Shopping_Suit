@@ -24,6 +24,7 @@ export const introduce_save_product_heart = (value: any, id_product: any) => {
 
 }
 
+
 export const add_product_in_shopping_westbasket = (id_product: any) => {
 
     if (window.localStorage.getItem("shopping_westbasket")) {

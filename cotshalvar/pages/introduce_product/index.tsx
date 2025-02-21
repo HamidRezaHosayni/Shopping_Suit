@@ -33,25 +33,21 @@ function Introduce_product1() {
   }
 
   useEffect(() => {
-    console.log("introduce_product1")
     if (window.localStorage.getItem("introduse_product")) {
-
+      
       const introduse_product = JSON.parse(window.localStorage.getItem("introduse_product")!);
-      axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/introduce_shopping_westbasket`, introduse_product, {
+      console.log(introduse_product)
+      axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/introduce_shopping_westbasket`, {"introduce_product":introduse_product}, {
         headers: {
           "Content-Type": "application/json",
           "Authorization": window.localStorage.getItem("Token_validation")
         }
       }).then((value) => {
-        set_All_introduce_product(value.data.value)
-        dispatch(Introduce_product.actions.Introduce_product(value.data.value))
+        console.log(value)
+        set_All_introduce_product(value.data.result)
+        dispatch(Introduce_product.actions.Introduce_product(value.data.result))
       }).catch((value) => {
-        if (value.response.status) {
-          window.location.replace("http://localhost:3000/Login-user")
-        }
-        else {
-          return;
-        }
+        console.log(value)
       })
 
     }
