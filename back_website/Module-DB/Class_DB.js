@@ -272,6 +272,38 @@ class Class_All_Query {
         })
     }
 
+    // insert data in comment_product table for validation user 
+    static INSERT_DATA_IN_COMMENT_PRODUCT = (value) => {
+        const tt = Object.values(value)
+        return Class_All_Query.query("INSERT INTO comment_product (id, comment) VALUE (?,?)", [tt[1],tt[0]]).then((value_insert_Regester_table) => {
+            if (value_insert_Regester_table[0].fieldCount === 0) {
+                console.log("insert data commet_product tabale successfully ...!!!");
+                return value_insert_Regester_table;
+            } else {
+                console.log("insert data commet_product tabale error ...!!!")
+            }
+        }).catch((e) => { return console.log("insert excute query commet_product TABALE error : \n" + e) })
+
+    }
+
+    // select data in Add_product table for get one product
+    static SELECT_COMMENT_PRODUCT_TABALE = (value) => {
+        return Class_All_Query.query("SELECT * FROM comment_product WHERE id=?",value).then((value_select_add_product_table) => {
+            if (value_select_add_product_table[0][0]) {
+                console.log("select table add_product for get one product form successfully...!!!")
+                return value_select_add_product_table[0];
+            }
+            else { console.log("error select add_product table. table is Empty") }
+        }).catch((e) => { console.log("error excute qury select add_product Tabel : \n" + e) })
+    }
+
+
+
+
+
+
+
+
 }
 
 

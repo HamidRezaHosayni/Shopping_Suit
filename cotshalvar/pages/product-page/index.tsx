@@ -27,7 +27,7 @@ function Product() {
   const state_product = useSelector((state: any) => state.Introduce_product.Introduce_product)
   const dispatch = useDispatch();
   const introduce_product = useRef<any>()
-
+console.log(state_product)
 
   const shopping_wetbasket = (value: any) => {
     add_product_in_shopping_westbasket(value)
@@ -47,10 +47,16 @@ function Product() {
         "Authorization": window.localStorage.getItem("Token_validation")
       }
     }).then((vlaue) => {
+
       setproduct(vlaue.data.value_result.slice(0, 7));
       dispatch(Introduce_product.actions.Introduce_product(vlaue.data.value_result))
-    }).catch((e) => { console.log(e) })
+
+    }).catch((e) => { 
+      console.log(e) 
+    })
   }, [dispatch])
+
+ 
 
   console.log("render_product_page")
   return (
@@ -131,7 +137,16 @@ function Product() {
                     <div className="w-full flex justify-end items-center flex-row">
                       <div className="flex justify-end items-center flex-row">
                         <span>
-                          {state_product?.includes(product.id) ? <span ref={introduce_product} onClick={() => { introduce_heart_product(product.id) }}><FaHeart className='lg:text-[1.5rem] text-[1rem] text-red-600 cursor-pointer' /></span> : <span ref={introduce_product} onClick={() => { introduce_heart_product(product.id) }}><CiHeart className='lg:text-[1.5rem] text-[1rem] cursor-pointer text-black' /></span>}
+                          
+                        {state_product?.includes(product.id) ? (
+                                <span ref={introduce_product} onClick={() => introduce_heart_product(product.id)}>
+                                  <FaHeart className='lg:text-[1.5rem] text-[1rem] text-red-600 cursor-pointer' />
+                                </span>
+                              ) : (
+                                <span ref={introduce_product} onClick={() => introduce_heart_product(product.id)}>
+                                  <CiHeart className='lg:text-[1.5rem] text-[1rem] cursor-pointer text-black' />
+                                </span>
+                              )}
                         </span>
                       </div>
                       <div className="flex justify-end items-center flex-row mr-[1rem]">

@@ -22,7 +22,7 @@ function Cell_product_page() {
 const [selectedSize, setSelectedSize] = useState("");
     const handleSizeChange = (event:any) => {
         setSelectedSize(event.target.value);
-        console.log("Selected size:", event.target.value);
+       
     };
 
 // get id product 
@@ -35,7 +35,7 @@ const [count_product,set_count_product]=useState(1)
    
   // info product 
   const [info_product,set_info_product]=useState<any>({})
-console.log(info_product)
+  const [commet_product,set_comment_product]=useState<any>([])
 
  // action heart introduce 
  const [heartchange,set_heartchange]=useState(true)
@@ -45,6 +45,7 @@ console.log(info_product)
 
  })
  
+//  add and remove introduce product heart icon 
  const introduce_product=()=>{
    const introduce_product:any= JSON.parse(window.localStorage.getItem("introduse_product")!)
    const mm=introduce_product?.find((value:any)=>info_product.id===value)
@@ -75,11 +76,13 @@ console.log(info_product)
   }
   const close_comment = () => {
     product_dropdown.close_comment(opencomment)
+    commend_textaria.current.value="";
   }
 
   const is_Login = useSelector((state: any) => state.is_Login.is_Login)
 
 
+  // get information one product 
   useEffect(() => {
     axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/get_one_product`,id,{
       headers: {
@@ -88,16 +91,17 @@ console.log(info_product)
       }
     }).then((vlaue) => {
       set_info_product(vlaue.data.info_product[0])
+      set_comment_product(vlaue.data.comment_product)
     }).catch((e) => { 
 
       console.log(e)
 
      })
 
-  }, [])
+  }, [set_comment_product,set_info_product])
 
 
-
+  // add size and count product to shopping_westbasket 
   const count_and_size={...info_product,"size":selectedSize,"count":count_product}
   const plus_shopping_westbasket=()=>{
     const westbasget_localstorage= window.localStorage.getItem("shopping_westbasket")
@@ -109,6 +113,29 @@ console.log(info_product)
     }
    
   
+  }
+
+const commend_textaria=useRef<any>();
+  const sendcommend_product=(value:any)=>{
+
+const id_and_comment:any={"comment":value.value,"id":info_product.id}
+   axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/add_comment`,id_and_comment,{
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": window.localStorage.getItem("Token_validation")
+    }
+   }).then((value)=>{
+    
+    set_comment_product([...commet_product,id_and_comment])
+    close_comment()
+   }).catch((e)=>{
+
+      if(e?.response?.status===401){
+        window.location.replace("/Login-user")
+      }
+
+   })
+
   }
 
 
@@ -226,10 +253,16 @@ console.log(info_product)
             {/* list comment product  */}
             <div className="lg:mt-[5rem] mt-[2rem]">
               <ul>
-                <li className="lg:text-[1rem] text-[0.8rem] font-v-light p-2 flex justify-start items-center flex-row">
-                  <span className="w-[2rem] h-[2rem] rounded-2xl bg-[--them3] ml-[0.4rem] border"></span>
-                  <span className=" bg-[--them3] p-2 rounded-lg">سلام بسیار خوب</span>
-                </li>
+                {
+                  commet_product?.map((comment:any)=>(
+
+                    <li className="lg:text-[1rem] text-[0.8rem] font-v-light p-2 flex justify-start items-center flex-row">
+                      <span className="w-[2rem] h-[2rem] rounded-2xl bg-[--them3] ml-[0.4rem] border"></span>
+                      <span className=" bg-[--them3] p-2 rounded-lg">{comment.comment}</span>
+                    </li>
+
+                  ))
+                }
               </ul>
             </div>
 
@@ -240,10 +273,10 @@ console.log(info_product)
                 <span onClick={close_comment} className="mt-1 ml-1"><IoClose className="text-[1.5rem] cursor-pointer left-0" /></span>
               </div>
 
-              <textarea className="mt-[1rem] mx-[1rem] " name="comment_options" id=""></textarea>
+              <textarea ref={commend_textaria} className="mt-[1rem] mx-[1rem] " name="comment_options" id=""></textarea>
               <div className="flex justify-center items-center flex-row mt-[2rem]">
                 <div className="lg:w-[9rem] lg:h-[3rem] h-[2rem] flex justify-center items-center flex-row lg:text-[1rem] text-[0.8rem] cursor-pointer px-[0.9rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] rounded-lg transition-all duration-300 ease-in-out">
-                  <button className="ml-[1rem]">ثبت نظر</button>
+                  <button onClick={()=>sendcommend_product(commend_textaria.current)} className="ml-[1rem]">ثبت نظر</button>
                   <FaCommentMedical />
                 </div>
               </div>

@@ -2,7 +2,7 @@ const express = require("express")
 const route_get_one_product = express.Router();
 const jwt=require("jsonwebtoken")
 const {validation_get_one_product,validationResult,validation_method_get_one_product} =require("./function")
-const { SELECT_ADD_PRODUCT_TABALE_FOR_GET_ONE_PRODUCT } = require("../../Module-DB/Class_DB")
+const { SELECT_ADD_PRODUCT_TABALE_FOR_GET_ONE_PRODUCT,SELECT_COMMENT_PRODUCT_TABALE } = require("../../Module-DB/Class_DB")
 
 
 
@@ -21,10 +21,9 @@ route_get_one_product.post("/get_one_product",validation_get_one_product,async(r
               try {
                   const jwt_verify = jwt.verify(req.headers.authorization, process.env.TOKEN_VALIDATION_JWT)
                   const select_one_product= await SELECT_ADD_PRODUCT_TABALE_FOR_GET_ONE_PRODUCT(req.body.cell_product_page);
-                  
-
+                  const select_comment_product=await SELECT_COMMENT_PRODUCT_TABALE(req.body.cell_product_page)
                   if(jwt_verify){
-                      res.status(200).send({"Message_type": "successfully","info_product":select_one_product})
+                      res.status(200).send({"Message_type": "successfully","info_product":select_one_product,"comment_product":select_comment_product})
                   }
               } catch (err) {
                   if (err.name === 'TokenExpiredError') {

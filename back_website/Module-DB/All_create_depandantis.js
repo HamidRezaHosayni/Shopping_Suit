@@ -145,6 +145,22 @@ class All_create_dependencis_class {
     }
 
 
+    static CREATE_TABALE_COMMENT_PRODUCT = async () => {
+
+        All_create_dependencis_class.query("CREATE TABLE IF NOT EXISTS comment_product (" +
+            "id VARCHAR(100) NOT NULL, " +
+            "comment VARCHAR(255) NOT NULL" +
+            ")"
+        ).then((value_create_regeste_table) => {
+            value_create_regeste_table[0].fieldCount === 0 ? console.log("create Table comment_product successfully ...!!!") : console.log("error create table comment_product ...!!!", value_create_regeste_table)
+        })
+    }
+
+
+
+
+
+
     static Close_DB = async () => {
         if (All_create_dependencis_class.#pool) {
             await All_create_dependencis_class.#pool.end();
