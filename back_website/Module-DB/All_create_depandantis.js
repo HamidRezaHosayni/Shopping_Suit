@@ -144,6 +144,21 @@ class All_create_dependencis_class {
         })
     }
 
+    static CREATE_TABALE_PAYMENT_USER = async () => {
+
+        All_create_dependencis_class.query("CREATE TABLE IF NOT EXISTS pyment_user (" +
+            "id VARCHAR(100) NOT NULL, " +
+            "pant_order LONGTEXT," +
+            "suit_order LONGTEXT ," +
+            "suit_and_pant_order LONGTEXT," +
+            "shopping_westbasket LONGTEXT," +
+            "status VARCHAR(100)" +
+            ")"
+        ).then((value_create_regeste_table) => {
+            value_create_regeste_table[0].fieldCount === 0 ? console.log("create Table pyment_user successfully ...!!!") : console.log("error create table profile_user ...!!!", value_create_regeste_table)
+        })
+    }
+
 
     static CREATE_TABALE_COMMENT_PRODUCT = async () => {
 

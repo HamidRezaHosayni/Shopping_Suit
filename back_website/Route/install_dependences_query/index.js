@@ -14,6 +14,7 @@ route_install_dependencis.get("/install_depandences",(req,res,next)=>{
     All_create_dependencis_class.CREATE_TABALE_ROUT_CONTACT_ME()
     All_create_dependencis_class.CREATE_TABALE_PROFILE_USER()
     All_create_dependencis_class.CREATE_TABALE_COMMENT_PRODUCT()
+    All_create_dependencis_class.CREATE_TABALE_PAYMENT_USER()
     next()
 })
 

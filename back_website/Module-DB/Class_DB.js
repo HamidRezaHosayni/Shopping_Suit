@@ -286,6 +286,43 @@ class Class_All_Query {
 
     }
 
+
+    // insert data in comment_product table for validation user 
+    static INSERT_DATA_IN_PAYMENT_USER = (value) => {
+        const tt = Object.values(value)
+        
+        const id=tt[0]
+        const pant_order=tt[1].pant_order
+        const suit_order=tt[1].suit_order
+        const suit_and_pant_order=tt[1].suit_and_pant_order
+        const shopping_westbasket=tt[1].shopping_westbasket
+        return Class_All_Query.query("INSERT INTO pyment_user (id, pant_order, suit_order, suit_and_pant_order, shopping_westbasket, status) VALUE (?,?,?,?,?,?)", [id,pant_order,suit_order,suit_and_pant_order,shopping_westbasket,"در انتظار تماس"]).then((value_insert_Regester_table) => {
+            if (value_insert_Regester_table[0].fieldCount === 0) {
+                console.log("insert data pyment_user tabale successfully ...!!!");
+                return value_insert_Regester_table;
+            } else {
+                console.log("insert data pyment_user tabale error ...!!!")
+            }
+        }).catch((e) => { return console.log("insert excute query pyment_user TABALE error : \n" + e) })
+
+    }
+
+
+
+    
+    // select data in Add_product table for get one product
+    static SELECT_PYMENT_USER_TABALE = (value) => {
+        return Class_All_Query.query("SELECT * FROM pyment_user WHERE id=?",value).then((value_select_add_product_table) => {
+            if (value_select_add_product_table[0][0]) {
+                console.log("select table pyment_user for get one product form successfully...!!!")
+                return value_select_add_product_table[0];
+            }
+            else { console.log("error select pyment_user table. table is Empty") }
+        }).catch((e) => { console.log("error excute qury select pyment_user Tabel : \n" + e) })
+    }
+
+  
+
     // select data in Add_product table for get one product
     static SELECT_COMMENT_PRODUCT_TABALE = (value) => {
         return Class_All_Query.query("SELECT * FROM comment_product WHERE id=?",value).then((value_select_add_product_table) => {

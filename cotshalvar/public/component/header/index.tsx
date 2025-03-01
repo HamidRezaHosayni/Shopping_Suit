@@ -123,9 +123,9 @@ function Header() {
                 </Link>
               </li>
               <li onClick={open_and_close_dropdown_menu} className="border-b-[1px] cursor-pointer m-[5px] hover:text-[--them4] hover:bg-[--them2] w-full flex justify-center items-center">
-                <Link href={""} title="محصولات خریداری شده" aria-label="محصولات خریداری شده" className="flex justify-start items-center">
+                <Link href={"/Regester_product_user"} title="محصولات خریداری شده" aria-label="محصولات خریداری شده" className="flex justify-start items-center">
                   <span><TbShoppingCartDollar /></span>
-                  <span className="mr-[0.5rem] text-[0.8rem]">خریداری شده</span>
+                  <span className="mr-[0.5rem] text-[0.8rem]"> سفارش داده </span>
                 </Link>
               </li>
               <li onClick={open_and_close_dropdown_menu} className="border-b-[1px] lg:text-[1rem] text-[0.8rem] cursor-pointer m-[5px] hover:text-[--them4] hover:bg-[--them2] w-full flex justify-center items-center">

@@ -98,7 +98,7 @@ const Shopping_basket_page = () => {
 
 
     useEffect(()=>{
-
+        
         if (window.localStorage.getItem("shopping_westbasket")) {
                 const shopping_westbasket = JSON.parse(window.localStorage.getItem("shopping_westbasket")!);
                 
@@ -145,8 +145,9 @@ const Shopping_basket_page = () => {
 
 
     const pyment_product = () => {
+        const shopping={"pant_order":JSON.stringify(window.localStorage.getItem("pant_order")!),"suit_order":JSON.stringify(window.localStorage.getItem("suit_order")!),"suit_and_pant_order":JSON.stringify(window.localStorage.getItem("suit_and_pant_order")!),"shopping_westbasket":JSON.stringify(window.localStorage.getItem("shopping_westbasket")!)}
 
-        axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/route_payment_product`, { ID_user }, {
+        axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/route_payment_product`, { ID_user,shopping}, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": window.localStorage.getItem("Token_validation")
@@ -159,14 +160,14 @@ const Shopping_basket_page = () => {
 
         }).catch((e) => {
 
-            const value_data = e.response.data;
-            if (value_data.Message_type === "error") {
+            const value_data = e.response?.data;
+            if (value_data?.Message_type === "error") {
                 set_message_popup_notif({ "Message_type": value_data.Message_type, "message": value_data.message })
                 window.localStorage.removeItem("Token_validation")
                 show_and_hidden_popup()
             }
-
             console.log(e)
+            
         })
     }
 
@@ -246,7 +247,7 @@ const Shopping_basket_page = () => {
 
                                             <tr>
                                                 <td>
-                                                    <button onClick={() => remove_pant_order(index)} className='border shadow-lg lg:text-[1rem] text-[0.8rem] px-2 rounded-lg lg:mt-[2rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] transition-all duration-300 ease-in-out'>خرید محصول</button>
+                                                    <button onClick={() => remove_pant_order(index)} className='border shadow-lg lg:text-[1rem] text-[0.8rem] px-2 rounded-lg lg:mt-[2rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] transition-all duration-300 ease-in-out'> حذف از سبد</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -311,7 +312,7 @@ const Shopping_basket_page = () => {
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <button onClick={() => remove_suit_order(index)} className='border shadow-lg lg:text-[1rem] text-[0.8rem] px-2 rounded-lg lg:mt-[2rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] transition-all duration-300 ease-in-out'>خرید محصول</button>
+                                                    <button onClick={() => remove_suit_order(index)} className='border shadow-lg lg:text-[1rem] text-[0.8rem] px-2 rounded-lg lg:mt-[2rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] transition-all duration-300 ease-in-out'> حذف از سبد</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -401,7 +402,7 @@ const Shopping_basket_page = () => {
 
                                             <tr>
                                                 <td>
-                                                    <button onClick={() => remove_suit_and_pant_order(index)} className='border shadow-lg lg:text-[1rem] text-[0.8rem] px-2 rounded-lg lg:mt-[2rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] transition-all duration-300 ease-in-out'>خرید محصول</button>
+                                                    <button onClick={() => remove_suit_and_pant_order(index)} className='border shadow-lg lg:text-[1rem] text-[0.8rem] px-2 rounded-lg lg:mt-[2rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] transition-all duration-300 ease-in-out'> حذف از سبد</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -474,7 +475,7 @@ const Shopping_basket_page = () => {
                                 <span>جمع کل خرید :</span>
                                 <span>{Number(All_price_product1 + All_price_product).toLocaleString('fa-IR')} تومان</span>
                             </div>
-                            <button onClick={pyment_product} className='border shadow-lg lg:text-[0.9rem] text-[0.6rem] p-2 rounded-lg lg:mt-[2rem] mr-[1rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] transition-all duration-300 ease-in-out'>خرید محصول</button>
+                            <button onClick={pyment_product} className='border shadow-lg lg:text-[0.9rem] text-[0.6rem] p-2 rounded-lg lg:mt-[2rem] mr-[1rem] bg-[--them4] text-[--them2] hover:bg-[--them2] hover:text-[--them4] transition-all duration-300 ease-in-out'> خرید محصول </button>
                         </div>
 
                     </div>

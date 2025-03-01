@@ -20,6 +20,7 @@ const Route_profile_user=require('./Route_profile_user/index')
 const Route_payment_product=require("./Route_payment_product/index")
 const Route_get_one_product=require("./Route_get_one_product/get_one_product")
 const Route_Comment_product=require("./Rout_comment_product/index")
+const Route_Regester_pyment= require("./Route_Regester_pyment_product/indx")
 
 All_Route.use(Home_page)
 All_Route.use(Regester_Page)
@@ -37,6 +38,6 @@ All_Route.use(Route_profile_user)
 All_Route.use(Route_payment_product)
 All_Route.use(Route_get_one_product) 
 All_Route.use(Route_Comment_product)
-
+All_Route.use(Route_Regester_pyment)
 
 module.exports = All_Route; 
