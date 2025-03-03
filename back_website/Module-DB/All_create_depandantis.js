@@ -147,7 +147,7 @@ class All_create_dependencis_class {
     static CREATE_TABALE_PAYMENT_USER = async () => {
 
         All_create_dependencis_class.query("CREATE TABLE IF NOT EXISTS pyment_user (" +
-            "id VARCHAR(100) NOT NULL, " +
+            "id VARCHAR(100) PRIMARY KEY NOT NULL, " +
             "pant_order LONGTEXT," +
             "suit_order LONGTEXT ," +
             "suit_and_pant_order LONGTEXT," +

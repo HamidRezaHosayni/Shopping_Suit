@@ -116,7 +116,7 @@ console.log(state_product)
             return (
 
               <div key={index} className="mt-[1rem]">
-                <div className="lg:w-[24rem] md:w-[15rem] w-[12rem] lg:h-[33rem] border rounded-xl overflow-hidden">
+                <div className=" lg:h-[33rem] border shadow-lg rounded-xl overflow-hidden">
 
                   <Link href={`product-page/${product.id}`}>
                     <div className="w-full lg:h-[23.7rem] h-[16rem]">

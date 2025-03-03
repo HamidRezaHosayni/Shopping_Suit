@@ -9,7 +9,7 @@ import Image from 'next/image'
 function regester_product() {
   const ID_user = useSelector((state: any) => state.is_Login.Token_Login)
   const is_Login = useSelector((state: any) => state.is_Login.is_Login);
-  const [pant_order,set_pant_order]=useState([])
+  const [pant_order,set_pant_order]=useState<any>([])
   const [suit_order,set_suit_order]=useState([])
   const [suit_and_pant_order,set_suit_and_pant_order]=useState([])
   const [shopping_westbasket,set_shopping_westbasket]=useState<any>()
@@ -24,21 +24,18 @@ useEffect(()=>{
         "Authorization": window.localStorage.getItem("Token_validation")
     }
     }).then((value) => {
-      // console.log(value.data.payment_product)
-      value.data.payment_product.map((value:any)=>{
+        value.data.payment_product.map((value:any)=>{
         set_pant_order(JSON.parse(JSON.parse(value.pant_order)))
         set_suit_order(JSON.parse(JSON.parse(value.suit_order)))
         set_suit_and_pant_order(JSON.parse(JSON.parse(value.suit_and_pant_order)))
         set_shopping_westbasket(JSON.parse(JSON.parse(value.shopping_westbasket)))
         set_status(value.status)
-      
-      })
-    }).catch((e) => {
-      console.log(e)   
+        
     })
-  },[ID_user])
-  
-  console.log(shopping_westbasket)
+}).catch((e) => {
+    console.log(e)   
+})
+},[ID_user])
 
   return (
     <>
@@ -249,46 +246,51 @@ useEffect(()=>{
         }
 
          <div className='mt-[5rem] grid  lg:grid-cols-3 md:grid-cols-3 grid-cols-2 gap-5 overflow-hidden'>
-                                    {
-                                        shopping_westbasket ? shopping_westbasket.map((value: any, index: any) => {
-        
-        
-                                            return (
-                                                <>
-                                                    <div key={index} className="shadow-lg rounded-xl lg:w-[15rem] w-[11rem] lg:h-[33rem]">
-                                                        <div className="lg:w-[15rem] w-[11rem] lg:h-[33rem] border rounded-xl overflow-hidden">
-        
-        
-                                                            <div className="w-full lg:h-[23.7rem] h-[16rem]">
-                                                                <Image className="lg:!w-full !w-full lg:!h-[23.7rem] !h-[16rem]" src={`/img/upload_img/${value.uploadfile.split(",")[0]}`} width={100} height={100} alt="image product" />
-                                                            </div>
-        
-                                                            <div className="w-full flex justify-center items-right flex-col px-[1rem] lg:mt-[2rem]">
-        
-                                                                <div>
-                                                                    <p className="font-v-medium lg:text-[1rem] text-[0.8rem] whitespace-nowrap">{value.name_product}</p>
-                                                                </div>
-        
-                                                                <div className="w-full flex justify-start items-center flex-row mt-[0.5rem]whitespace-nowrap">
-                                                                    <span className="font-v-light lg:text-[1rem] text-[0.8rem]">قیمت محصول :</span>
-                                                                    <span className="font-v-light lg:text-[1rem] text-[0.8rem] mr-[0.8rem]">{Number(value.price_product).toLocaleString('fa-IR')}</span>
-                                                                </div>
+            {
+                shopping_westbasket ? shopping_westbasket.map((value: any, index: any) => {
 
-                                                                <div className="w-full flex justify-start items-center flex-row mt-[0.5rem]whitespace-nowrap">
-                                                                    <span className="font-v-light lg:text-[1rem] text-[0.8rem]">اندازه محصول :</span>
-                                                                    <span className="font-v-light lg:text-[1rem] text-[0.8rem] mr-[0.8rem]">{value.size}</span>
-                                                                </div>
+                    return (
+                        <>
+                            <div key={index} className="shadow-lg rounded-xl lg:w-[15rem] w-[11rem] lg:h-[33rem]">
+                                <div className="lg:w-[15rem] w-[11rem] lg:h-[33rem] border rounded-xl overflow-hidden">
 
-                                                            </div>
-        
-                                                        </div>
-                                                    </div>
-                                                </>
-                                            )
-                                        }) : null
-                                    }
-        
+
+                                    <div className="w-full lg:h-[23.7rem] h-[16rem]">
+                                        <Image className="lg:!w-full !w-full lg:!h-[23.7rem] !h-[16rem]" src={`/img/upload_img/${value.uploadfile.split(",")[0]}`} width={100} height={100} alt="image product" />
+                                    </div>
+
+                                    <div className="w-full flex justify-center items-right flex-col px-[1rem] lg:mt-[2rem]">
+
+                                        <div>
+                                            <p className="font-v-medium lg:text-[1rem] text-[0.8rem] whitespace-nowrap">{value.name_product}</p>
+                                        </div>
+
+                                        <div className="w-full flex justify-start items-center flex-row mt-[0.5rem]whitespace-nowrap">
+                                            <span className="font-v-light lg:text-[1rem] text-[0.8rem]">قیمت محصول :</span>
+                                            <span className="font-v-light lg:text-[1rem] text-[0.8rem] mr-[0.8rem]">{Number(value.price_product).toLocaleString('fa-IR')}</span>
+                                        </div>
+
+                                        <div className="w-full flex justify-start items-center flex-row mt-[0.5rem]whitespace-nowrap">
+                                            <span className="font-v-light lg:text-[1rem] text-[0.8rem]">اندازه محصول :</span>
+                                            <span className="font-v-light lg:text-[1rem] text-[0.8rem] mr-[0.8rem]">{value.size}</span>
+                                        </div>
+
+                                        <div className="w-full whitespace-nowrap flex justify-start items-center flex-row mt-[0.5rem]whitespace-nowrap">
+                                            <span className="font-v-light lg:text-[1rem] text-[0.8rem]"> وضعیت ارسال :</span>
+                                            <span className="font-v-light lg:text-[1rem] text-[0.8rem] mr-[0.5rem]">{status}</span>
+                                        </div>
+
+                                    </div>
+
                                 </div>
+                            </div>
+                        </>
+                    )
+
+                }) : null
+            }
+        
+         </div>
 
 
       </div>

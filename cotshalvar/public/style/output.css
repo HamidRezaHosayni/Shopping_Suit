@@ -6,6 +6,9 @@
   --them4: #000000;
   --them5: #FF0000;
 }
+.\!visible {
+  visibility: visible !important;
+}
 .visible {
   visibility: visible;
 }
@@ -17,6 +20,9 @@
 }
 .relative {
   position: relative;
+}
+.static {
+  position: static;
 }
 .top-\[3rem\] {
   top: 3rem;
@@ -185,6 +191,9 @@
 }
 .block {
   display: block;
+}
+.contents {
+  display: contents;
 }
 .flex {
   display: flex;
@@ -431,8 +440,14 @@
 .rotate-180 {
   rotate: 180deg;
 }
+.transform {
+  transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
+}
 .cursor-pointer {
   cursor: pointer;
+}
+.resize {
+  resize: both;
 }
 .resize-y {
   resize: vertical;
@@ -681,6 +696,9 @@
 .text-\[--them5\] {
   color: --them5;
 }
+.lowercase {
+  text-transform: lowercase;
+}
 .opacity-80 {
   opacity: 80%;
 }
@@ -807,6 +825,31 @@
   syntax: "*";
   inherits: false;
   initial-value: 0;
+}
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: rotateX(0);
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: rotateY(0);
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: rotateZ(0);
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: skewX(0);
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: skewY(0);
 }
 @property --tw-border-style {
   syntax: "*";
