@@ -124,6 +124,23 @@ class Class_All_Query {
         }).catch((e) => { console.log("error excute qury select profile_user Tabel : \n" + e) })
     }
 
+
+     // select data in PROFILE_USER table for validation user 
+     static SELECT_ONE_TABLE_PROFILE_USER = (value) => {
+        return Class_All_Query.query("SELECT * FROM profile_user WHERE id= ?",value).then((value_select_regester_table) => {
+            if (value_select_regester_table[0][0]) {
+                console.log("select table profile_user form successfully...!!!")
+                return value_select_regester_table[0];
+            }
+            else {
+                return value_select_regester_table[0]
+            }
+        }).catch((e) => { console.log("error excute qury select profile_user Tabel : \n" + e) })
+    }
+
+
+
+
     // insert data in regester_validation table for validation user 
     static INSERT_DATA_IN_REGESTER_VALIDATION_TO_REGESTER = (value) => {
         const tt = Object.values(value)
@@ -153,6 +170,13 @@ class Class_All_Query {
             console.log("error excute qury select admin_login Tabel : \n" + e)
         })
 
+    }
+
+
+    static DELETE_DATA_IN_PYMENT_USER_TABLE = (value) => {
+        return Class_All_Query.query("DELETE FROM pyment_user WHERE id=? ", value).then((value_delete_regester_validation) => {
+            return value_delete_regester_validation
+        })
     }
 
     static DELETE_DATA_IN_REGESTER_VALIDATION_TABLE = (value) => {
@@ -313,6 +337,18 @@ class Class_All_Query {
     // select data in Add_product table for get one product
     static SELECT_PYMENT_USER_TABALE = (value) => {
         return Class_All_Query.query("SELECT * FROM pyment_user WHERE id=?",value).then((value_select_add_product_table) => {
+            if (value_select_add_product_table[0][0]) {
+                console.log("select table pyment_user for get one product form successfully...!!!")
+                return value_select_add_product_table[0];
+            }
+            else { console.log("error select pyment_user table. table is Empty") }
+        }).catch((e) => { console.log("error excute qury select pyment_user Tabel : \n" + e) })
+    }
+
+  
+    // select data in Add_product table for get one product
+    static SELECT_PYMENT_USER_ALL_TABALE = () => {
+        return Class_All_Query.query("SELECT * FROM pyment_user").then((value_select_add_product_table) => {
             if (value_select_add_product_table[0][0]) {
                 console.log("select table pyment_user for get one product form successfully...!!!")
                 return value_select_add_product_table[0];

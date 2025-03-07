@@ -26,7 +26,7 @@ function Menu_page({ children }) {
               <ul ref={list_Element} className='leading-10 w-full'>
                 <Link to={"/Home_page"} ref={list_Element2} onClick={get_item_menu_list} className='bg-slate-600  cursor-pointer !w-full !inline-block p-[1rem] text-center text-white font-v-medium'>صفحه اصلی</Link>
                 <Link to={"/Add_product"} ref={list_Element2} onClick={get_item_menu_list} className='bg-slate-600  cursor-pointer !w-full !inline-block p-[1rem] text-center text-white font-v-medium'>اضافه کردن محصول</Link>
-                <Link to={"/Home_page"} ref={list_Element2} onClick={get_item_menu_list} className='bg-slate-600  cursor-pointer !w-full !inline-block p-[1rem] text-center text-white font-v-medium'>صفحه اصلی</Link>
+                <Link to={"/show_Regester_product"} ref={list_Element2} onClick={get_item_menu_list} className='bg-slate-600  cursor-pointer !w-full !inline-block p-[1rem] text-center text-white font-v-medium'> محصولات سفارش داده شده</Link>
                 <Link to={"/Home_page"} ref={list_Element2} onClick={get_item_menu_list} className='bg-slate-600  cursor-pointer !w-full !inline-block p-[1rem] text-center text-white font-v-medium'>صفحه اصلی</Link>
                 <Link to={"/Home_page"} ref={list_Element2} onClick={get_item_menu_list} className='bg-slate-600  cursor-pointer !w-full !inline-block p-[1rem] text-center text-white font-v-medium'>صفحه اصلی</Link>
                 <Link to={"/Home_page"} ref={list_Element2} onClick={get_item_menu_list} className='bg-slate-600  cursor-pointer !w-full !inline-block p-[1rem] text-center text-white font-v-medium'>صفحه اصلی</Link>
