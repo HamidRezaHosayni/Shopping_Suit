@@ -23,8 +23,14 @@ route_payment_product.post("/route_payment_product", async (req, res) => {
                 else {
                     //=================================
                     
-                    await INSERT_DATA_IN_PAYMENT_USER(req.body)
-                   
+                    const insert_pyment_user=await INSERT_DATA_IN_PAYMENT_USER(req.body)
+                    // console.log(typeof insert_pyment_user)
+                   if(insert_pyment_user == undefined){
+                    return res.status(200).send({"Message_type":"successfully","message":"شمایک سفارش در حال بررسی دارید . شما میتوانید بعد از تماس کارشناسان  ما دوباره محصول ثبت کنید", "redirect": "http://localhost:3000/"})
+                   } 
+                   else{
+                    return res.status(200).send({"Message_type":"successfully","message":"محصول شما با مفقیت ثبت گردید", "redirect": "http://localhost:3000/Regester_product_user"})
+                   }
                      
                     //=================
                 }

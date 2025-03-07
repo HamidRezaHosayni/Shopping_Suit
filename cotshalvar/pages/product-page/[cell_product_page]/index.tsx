@@ -11,11 +11,22 @@ import { useSelector } from "react-redux"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import axios from 'axios'
+import { BiSolidErrorAlt } from "react-icons/bi"
+import { FaCheckCircle } from "react-icons/fa"
+import { show_popup_Element } from '@/public/js/popup_elment_form'
+
 
  
 // shopping_westbasket
 function Cell_product_page() {
 
+  const popup_element = useRef(null)
+  const [message_popup_notif, set_message_popup_notif] = useState({ "Message_type": "", "message": "" })
+    const [redirect_page, set_redirect_page] = useState<any>()
+
+    const show_and_hidden_popup = () => {
+        show_popup_Element(popup_element, redirect_page);
+    }
 
 
 // get size product 
@@ -104,12 +115,28 @@ const [count_product,set_count_product]=useState(1)
   // add size and count product to shopping_westbasket 
   const count_and_size={...info_product,"size":selectedSize,"count":count_product}
   const plus_shopping_westbasket=()=>{
-    const westbasget_localstorage= window.localStorage.getItem("shopping_westbasket")
-    if(westbasget_localstorage){
-      const All_west_basket=[...JSON.parse(westbasget_localstorage),count_and_size]
-      window.localStorage.setItem("shopping_westbasket",JSON.stringify(All_west_basket))
+    console.log(count_product)
+    console.log(selectedSize)
+    if(selectedSize === '0' || selectedSize === "" || selectedSize === null || count_product === 0){
+      set_message_popup_notif({ "Message_type": "error", "message":"تعداد محصول نمیتواند خالی باشد \n سایز محصول نمیتواند خالی باشد" })
+      show_and_hidden_popup()
+      set_redirect_page(`http://localhost:3000/product-page/${info_product.id}`)
     }else{
-      window.localStorage.setItem("shopping_westbasket",JSON.stringify([count_and_size]))
+      const westbasget_localstorage= window.localStorage.getItem("shopping_westbasket")
+      if(westbasget_localstorage){
+        const All_west_basket=[...JSON.parse(westbasget_localstorage),count_and_size]
+        window.localStorage.setItem("shopping_westbasket",JSON.stringify(All_west_basket))
+        set_message_popup_notif({ "Message_type": "successfuly", "message":"محصول به سبد خرید اضافه شد "})
+        show_and_hidden_popup()
+        set_redirect_page(`http://localhost:3000/shopping_basket_page`)
+ 
+      }else{
+        window.localStorage.setItem("shopping_westbasket",JSON.stringify([count_and_size]))
+        set_message_popup_notif({ "Message_type": "successfuly", "message":"محصول به سبد خرید اضافه شد "})
+        show_and_hidden_popup()
+        set_redirect_page(`http://localhost:3000/shopping_basket_page`)
+      }
+      
     }
    
   
@@ -118,29 +145,44 @@ const [count_product,set_count_product]=useState(1)
 const commend_textaria=useRef<any>();
   const sendcommend_product=(value:any)=>{
 
-const id_and_comment:any={"comment":value.value,"id":info_product.id}
-   axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/add_comment`,id_and_comment,{
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": window.localStorage.getItem("Token_validation")
-    }
-   }).then((value)=>{
-    
-    set_comment_product([...commet_product,id_and_comment])
-    close_comment()
-   }).catch((e)=>{
+    const id_and_comment:any={"comment":value.value,"id":info_product.id}
+      axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/add_comment`,id_and_comment,{
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": window.localStorage.getItem("Token_validation")
+        }
+      }).then((value)=>{
+        set_comment_product([...commet_product,id_and_comment])
+        close_comment()
+      }).catch((e)=>{
 
-      if(e?.response?.status===401){
-        window.location.replace("/Login-user")
-      }
+          if(e?.response?.status===401){
+            window.location.replace("/Login-user")
+          }
 
-   })
+      })
 
   }
 
 
   return (
     <>
+    
+      <div className='container m-auto flex justify-center items-center fixed top-[50%] z-[100]'>
+          {/* popup in response value  */}
+          <div ref={popup_element} className='lg:w-[0rem] w-[0rem] h-[0rem] z-[10] absolute rounded-xl overflow-hidden bg-[--them1] border transition-all duration-300 ease-in-out'>
+              <div className='w-full h-[2rem] text-[3rem] text-white mt-[3rem] flex justify-center items-center flex-row'>
+                  {message_popup_notif.Message_type === "error" ? <BiSolidErrorAlt /> : <FaCheckCircle />}
+              </div>
+              <div className='w-full h-[2rem] text-[2rem] text-white mt-[3rem] flex justify-center items-center flex-row'>
+                  <p className='lg:text-[1rem] text-[0.8rem] font-v-medium'>{message_popup_notif.message}</p>
+              </div>
+              <div onClick={show_and_hidden_popup} className='w-full h-[2rem] cursor-pointer border text-white hover:text-[--them4] hover:bg-[--them2] flex justify-center items-center mt-[3rem] font-v-medium text-[1rem]'>
+                  <button className='boeder-2 border-white'>باشه</button>
+              </div>
+          </div>
+      </div>
+
       {is_Login ?
         <div className="relative">
 

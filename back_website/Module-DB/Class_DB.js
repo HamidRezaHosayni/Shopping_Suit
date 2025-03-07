@@ -320,14 +320,20 @@ class Class_All_Query {
         const suit_order=tt[1].suit_order
         const suit_and_pant_order=tt[1].suit_and_pant_order
         const shopping_westbasket=tt[1].shopping_westbasket
-        return Class_All_Query.query("INSERT INTO pyment_user (id, pant_order, suit_order, suit_and_pant_order, shopping_westbasket, status) VALUE (?,?,?,?,?,?)", [id,pant_order,suit_order,suit_and_pant_order,shopping_westbasket,"در انتظار تماس"]).then((value_insert_Regester_table) => {
-            if (value_insert_Regester_table[0].fieldCount === 0) {
-                console.log("insert data pyment_user tabale successfully ...!!!");
-                return value_insert_Regester_table;
-            } else {
-                console.log("insert data pyment_user tabale error ...!!!")
-            }
-        }).catch((e) => { return console.log("insert excute query pyment_user TABALE error : \n" + e) })
+       
+
+            return Class_All_Query.query("INSERT INTO pyment_user (id, pant_order, suit_order, suit_and_pant_order, shopping_westbasket, status) VALUE (?,?,?,?,?,?)", [id,pant_order,suit_order,suit_and_pant_order,shopping_westbasket,"در انتظار تماس"]).then((value_insert_Regester_table) => {
+                if (value_insert_Regester_table[0].fieldCount === 0) {
+                    console.log("insert data pyment_user tabale successfully ...!!!");
+                    return value_insert_Regester_table;
+                }
+               
+            }).catch((e) => { 
+                 console.log("insert excute query pyment_user TABALE error : \n" + e) 
+                 return e;
+            })
+
+       
 
     }
 

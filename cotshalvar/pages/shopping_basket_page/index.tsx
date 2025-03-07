@@ -1,4 +1,3 @@
-
 import { add_product_in_shopping_westbasket } from '@/public/js/introduce_save_product_heart'
 import { show_popup_Element } from '@/public/js/popup_elment_form'
 import axios from 'axios'
@@ -112,24 +111,24 @@ const Shopping_basket_page = () => {
     },[])
     
 
-        const remove_product=(value:any)=>{
+        const remove_product = (value: any) => {
             if (window.localStorage.getItem("shopping_westbasket")) {
                 // دریافت لیست محصولات از localStorage
                 let shopping_westbasket = JSON.parse(window.localStorage.getItem("shopping_westbasket")!);
         
-                // پیدا کردن محصول موردنظر برای حذف
-                const productToRemove = shopping_westbasket.find((item: any) => item.id === value);
-         
-                if (productToRemove) {
+                // پیدا کردن ایندکس اولین محصول موردنظر برای حذف
+                const productIndexToRemove = shopping_westbasket.findIndex((item: any) => item.id === value);
+        
+                if (productIndexToRemove !== -1 && shopping_westbasket[productIndexToRemove]) {
                     // کم کردن مقدار price_product از set_All_price_product1
-                    set_All_price_product1(prevPrice => prevPrice - Number(productToRemove.price_product));
+                    set_All_price_product1(prevPrice => prevPrice - Number(shopping_westbasket[productIndexToRemove].price_product));
         
                     // حذف محصول از آرایه
-                    shopping_westbasket = shopping_westbasket.filter((item: any) => item.id !== value);
+                    shopping_westbasket.splice(productIndexToRemove, 1);
         
                     // ذخیره لیست جدید در localStorage
                     window.localStorage.setItem("shopping_westbasket", JSON.stringify(shopping_westbasket));
-                    set_All_product_westbasket(shopping_westbasket)
+                    set_All_product_westbasket(shopping_westbasket);
                     console.log("محصول حذف شد:", value);
                 } else {
                     console.log("محصول موردنظر یافت نشد.");
@@ -155,11 +154,19 @@ const Shopping_basket_page = () => {
         }).then((value) => {
             const value_data = value.data;
             set_message_popup_notif({ "Message_type": value_data.Message_type, "message": value_data.message })
+            if(value_data.message==="محصول شما با مفقیت ثبت گردید"){
+                window.localStorage.removeItem("suit_order")
+                window.localStorage.removeItem("pant_order")
+                window.localStorage.removeItem("shopping_westbasket")
+                window.localStorage.removeItem("suit_and_pant_order")
+
+            }
+
             set_redirect_page(value_data.redirect)
             show_and_hidden_popup()
 
         }).catch((e) => {
-
+ 
             const value_data = e.response?.data;
             if (value_data?.Message_type === "error") {
                 set_message_popup_notif({ "Message_type": value_data.Message_type, "message": value_data.message })
@@ -422,11 +429,8 @@ const Shopping_basket_page = () => {
 
                         <div className='mt-[5rem] grid  lg:grid-cols-3 md:grid-cols-3 grid-cols-2 gap-5 overflow-hidden'>
                             {
-                                All_product_westbasket ? All_product_westbasket.map((value: any, index: any) => {
+                                All_product_westbasket ? All_product_westbasket.map((value: any, index: any) =>(
 
-
-                                    return (
-                                        <>
                                             <div key={index} className="shadow-lg rounded-xl">
                                                 <div className="lg:w-[15rem] w-[11rem] lg:h-[33rem] border rounded-xl overflow-hidden">
 
@@ -455,9 +459,8 @@ const Shopping_basket_page = () => {
 
                                                 </div>
                                             </div>
-                                        </>
-                                    )
-                                }) : null
+                                )
+                                ) : null
                             }
 
                         </div>
