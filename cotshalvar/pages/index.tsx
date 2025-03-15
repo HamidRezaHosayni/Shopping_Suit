@@ -175,7 +175,7 @@ export default function HomePage() {
         <div className="w-[80%] flex justify-center items-center flex-col">
           <p className="text-[1rem] text-center font-v-light mt-[1rem]">خیاطی سعید با نام برند Art man class  سال ها در زمنیه دوخت کت وشلوار با بیش از 35 سال سابقه کار در این زمینه اماده خدمت رسانی به شما مردم عزیز بوده است .  و برای اولین بار ساز کاری را ارئه داده است تا کاربر بتواند بدون مراجعه حضوری سفارش خود را با اندازه شخصی خود ثبت کند و از امکانات کت و شلوار شخصی دوز بدون مراجه به شعبه ای بهرمند شوند.</p>
           <p className="text-[1rem] text-center font-v-light">برای این امر اموزش هایی برای شما عزیزان اماده شده است تا شما بتوانید به صورت شخصی کت و شلوار خود را سفارش دهید . </p>
-          <Link href={""} title="اموزش برای اندازه گیری محصول" className="border mt-5 transition-all duration-300 ease-in-out bg-black text-[--them2] hover:bg-[--them2] hover:text-black p-[8px] lg:text-[1rem] text-[0.8rem] rounded-lg ml-5">اموزش برای اندازه گیری</Link>
+          <Link href={"/learning_measutment"} title="اموزش برای اندازه گیری محصول" className="border mt-5 transition-all duration-300 ease-in-out bg-black text-[--them2] hover:bg-[--them2] hover:text-black p-[8px] lg:text-[1rem] text-[0.8rem] rounded-lg ml-5">اموزش برای اندازه گیری</Link>
         </div>
       </div>
 

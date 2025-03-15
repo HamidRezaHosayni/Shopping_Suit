@@ -1,14 +1,20 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, A11y, Navigation, Autoplay, Scrollbar } from 'swiper/modules';
-
+import { useState } from 'react';
 import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 
-function Sider_cell_product_page() {
+interface SiderCellProductPageProps {
+    someValue: string; // یا هر نوع داده‌ای که می‌خواهید ارسال کنید
+  }
+
+  const Sider_cell_product_page: React.FC<SiderCellProductPageProps> = ({ someValue }) => {
+    console.log()
+    
     return (
         <>
             <div className='h-[40vh] lg:h-[25rem] w-full lg:w-3/4 px-[0.5rem] lg:px-[unset]'>
@@ -30,11 +36,14 @@ function Sider_cell_product_page() {
                     }}
 
                 >
-                    <SwiperSlide><Image className='!h-[100%]' src={"/img/home_page/1.jpg"} layout="responsive" width={100} height={50} alt='picture_first_slider' /></SwiperSlide>
-                    <SwiperSlide><Image className='!h-[100%]' src={"/img/home_page/2.jpg"} layout="responsive" width={100} height={50} alt='picture_first_slider' /></SwiperSlide>
-                    <SwiperSlide><Image className='!h-[100%]' src={"/img/home_page/3.jpg"} layout="responsive" width={100} height={50} alt='picture_first_slider' /></SwiperSlide>
-                    <SwiperSlide><Image className='!h-[100%]' src={"/img/home_page/2.jpg"} layout="responsive" width={100} height={50} alt='picture_first_slider' /></SwiperSlide>
-                   
+                    {
+                        someValue?.split(",").map((value)=>(
+                            value?
+                            <SwiperSlide><Image className='!h-[100%]' src={`/img/upload_img/${value}`} layout="responsive" width={100} height={50} alt='picture_first_slider' /></SwiperSlide>
+                            :null
+                        ))
+                    }
+                    
                 </Swiper>
             </div>
         </>

@@ -21,7 +21,7 @@ function Selectunitsuit() {
 
                         <div className='flex justify-start flex-row whitespace-pre-wrap mt-1'>
                             <p className='text-[1rem] font-v-light'>شما همچنین میتوانید کلیپ آموزشی ما نسبت به این موضوع را در </p>
-                            <Link href={""} className='text-blue-600 font-v-bold'>اینجا </Link>
+                            <Link href={"/learning_measutment"} className='text-blue-600 font-v-bold'>اینجا </Link>
                             <p className='text-[1rem] font-v-light'>مشاهده کنید.</p>
                         </div>
 

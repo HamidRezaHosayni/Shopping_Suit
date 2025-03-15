@@ -93,7 +93,7 @@ const [count_product,set_count_product]=useState(1)
   const is_Login = useSelector((state: any) => state.is_Login.is_Login)
 
 
-  // get information one product 
+  // get information one product and get commend product
   useEffect(() => {
     axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/get_one_product`,id,{
       headers: {
@@ -142,6 +142,8 @@ const [count_product,set_count_product]=useState(1)
   
   }
 
+
+  // send commend product 
 const commend_textaria=useRef<any>();
   const sendcommend_product=(value:any)=>{
 
@@ -163,7 +165,6 @@ const commend_textaria=useRef<any>();
       })
 
   }
-
 
   return (
     <>
@@ -276,7 +277,7 @@ const commend_textaria=useRef<any>();
 
             {/* pic_product cell page  */}
             <div className="lg:w-[50%] w-full flex justify-start items-center">
-              <Sider_cell_product_page />
+            <Sider_cell_product_page someValue={info_product.uploadfile} />
             </div>
 
 
