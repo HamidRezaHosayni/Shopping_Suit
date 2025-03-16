@@ -9,6 +9,8 @@ import { useSelector } from 'react-redux'
 import axios from 'axios'
 import { BiSolidErrorAlt } from 'react-icons/bi'
 import { FaCheckCircle } from 'react-icons/fa'
+import Pic_learnig_measurment_product from '@/public/component/suit_and_pant_order/pic_learnig_measurment_product';
+
 
 function Pants_order() {
     const popup_element = useRef(null)
@@ -18,7 +20,9 @@ function Pants_order() {
     const [Redirect_Logni, set_Redirect_Logni] = useState(null)
     const [price_product, set_price_product] = useState<any>(500000)
     const [price_product1, set_price_product1] = useState<any>(500000)
-
+    const [show_and_close_info_fild,set_show_and_close_info_fild]=useState(false)
+    const [text_content_info_fild,set_text_content_info_fild]=useState()
+    const [image_content_info_fild,set_image_content_info_fild]=useState()
 
     const show_and_hidden_popup = () => {
         show_popup_Element(popup_element, Redirect_Logni);
@@ -102,12 +106,22 @@ function Pants_order() {
         set_price_product1(Number(500000 + Number(price_product)))
     }, [formik.values.noye_parcheh, price_product]);
 
+    const show_info_fild=(path_image:any,text_content:any)=>{
+        set_image_content_info_fild(path_image)
+        set_text_content_info_fild(text_content)
+        set_show_and_close_info_fild(true)
+    }
+    const close_info_fild=()=>{
+        set_show_and_close_info_fild(false)
+    }
+
     return (
         <>
             {
                 is_Login ?
 
-                    <div className='container m-auto  flex justify-center items-center flex-col lg:p-[5rem]'>
+                <div className='container m-auto  flex justify-center items-center flex-col lg:p-[5rem]'>
+                        <Pic_learnig_measurment_product isVisible={show_and_close_info_fild} onClose={close_info_fild} content={text_content_info_fild} pic_path={image_content_info_fild}></Pic_learnig_measurment_product>
                         {/* popup in response value  */}
                         <div ref={popup_element} className='lg:w-[0rem] w-[0rem] h-[0rem] z-[10] absolute rounded-xl overflow-hidden bg-[--them1] border transition-all duration-300 ease-in-out'>
                             <div className='w-full h-[2rem] text-[3rem] text-white mt-[3rem] flex justify-center items-center flex-row'>
@@ -127,7 +141,7 @@ function Pants_order() {
                                 <div className='flex justify-start flex-row whitespace-pre-wrap mt-[2rem]'>
                                     <span><TbCircleFilled className='text-[--them5]' /></span>
                                     <p className='text-[1rem] font-v-light mr-[10px] ml-[10px]'>توجه : در اندازه گیره محصول دقت فرمایید برای آموزش هر فیلد بر روی آیکون</p>
-                                    <span><AiFillExclamationCircle /></span>
+                                    <span className='cursor-pointer'><AiFillExclamationCircle /></span>
                                     <p className='text-[1rem] font-v-light mr-[10px]'>درکنار هر فیلد کلیک کنید.</p>
                                 </div>
 
@@ -151,7 +165,7 @@ function Pants_order() {
                                     <div className='flex justify-start items-center flex-row'>
                                         <TbCircleFilled className='text-[--them5]' />
                                         <p className='text-[0.68rem]'>توجه : در اندازه گیره محصول دقت فرمایید برای آموزش هر فیلد بر روی آیکون</p>
-                                        <AiFillExclamationCircle className='mr-[5px]' />
+                                        <AiFillExclamationCircle className='mr-[5px] cursor-pointer' />
                                     </div>
                                     <p className='text-[0.68rem]'>درکنار هر فیلد کلیک کنید.</p>
 
@@ -180,43 +194,43 @@ function Pants_order() {
                                 <div className='flex justify-end items-center lg:w-[25rem] w-[20rem] mt-[2rem]'>
                                     <label htmlFor='ghad_shalvar' className='ml-[1rem] lg:text-[1rem] text-[0.9rem] font-v-light'> قد شلوار : </label>
                                     <input {...formik.getFieldProps("ghad_shalvar")} className={`border-2 ${formik.touched.ghad_shalvar && formik.errors.ghad_shalvar ? "border-red-600 placeholder:text-[--them5] placeholder:text-[0.7rem] indent-1" : ""} rounded-lg shadow-md outline-none`} placeholder={`${formik.touched.ghad_shalvar && formik.errors.ghad_shalvar ? formik.errors.ghad_shalvar : "اندازه قد"}`} id='ghad_shalvar' type="text" />
-                                    <span className='mr-[1rem]'><AiFillExclamationCircle /></span>
+                                    <span className='mr-[1rem] cursor-pointer'><AiFillExclamationCircle onClick={()=>show_info_fild("/img/home_page/1.jpg","yyyyyyyyyyyy")}/></span>
                                 </div>
 
                                 <div className='flex justify-end items-center lg:w-[25rem] w-[20rem] mt-[1rem]'>
                                     <label htmlFor='kamar_shalvar' className='ml-[1rem] lg:text-[1rem] text-[0.9rem] font-v-light'> کمر شلوار : </label>
                                     <input {...formik.getFieldProps("kamar_shalvar")} className={`border-2 ${formik.touched.kamar_shalvar && formik.errors.kamar_shalvar ? "border-red-600 placeholder:text-[--them5] placeholder:text-[0.7rem] indent-1" : ""} rounded-lg shadow-md outline-none`} placeholder={`${formik.touched.kamar_shalvar && formik.errors.kamar_shalvar ? formik.errors.kamar_shalvar : "اندازه کمر"}`} id='kamar_shalvar' type="text" />
-                                    <span className='mr-[1rem]'><AiFillExclamationCircle /></span>
+                                    <span className='mr-[1rem] cursor-pointer'><AiFillExclamationCircle onClick={()=>show_info_fild("/img/home_page/1.jpg","yyyyyyyyyyyy")}/></span>
                                 </div>
 
                                 <div className='flex justify-end items-center lg:w-[25rem] w-[20rem] mt-[1rem]'>
                                     <label htmlFor='andaza_basan' className='ml-[1rem] lg:text-[1rem] text-[0.9rem] font-v-light'>  اندازه باسن : </label>
                                     <input {...formik.getFieldProps("andaza_basan")} className={`border-2 ${formik.touched.andaza_basan && formik.errors.andaza_basan ? "border-red-600 placeholder:text-[--them5] placeholder:text-[0.7rem] indent-1" : ""} rounded-lg shadow-md outline-none`} placeholder={`${formik.touched.andaza_basan && formik.errors.andaza_basan ? formik.errors.andaza_basan : "اندازه باسن"}`} id='andaza_basan' type="text" />
-                                    <span className='mr-[1rem]'><AiFillExclamationCircle /></span>
+                                    <span className='mr-[1rem] cursor-pointer'><AiFillExclamationCircle onClick={()=>show_info_fild("/img/home_page/1.jpg","yyyyyyyyyyyy")}/></span>
                                 </div>
 
                                 <div className='flex justify-end items-center lg:w-[25rem] w-[20rem] mt-[1rem]'>
                                     <label htmlFor='andaza_ran' className='ml-[1rem] lg:text-[1rem] text-[0.9rem] font-v-light'> اندازه ران : </label>
                                     <input {...formik.getFieldProps("andaza_ran")} className={`border-2 ${formik.touched.andaza_ran && formik.errors.andaza_ran ? "border-red-600 placeholder:text-[--them5] placeholder:text-[0.7rem] indent-1" : ""} rounded-lg shadow-md outline-none`} placeholder={`${formik.touched.andaza_ran && formik.errors.andaza_ran ? formik.errors.andaza_ran : "اندازه ران"}`} id='andaza_ran' type="text" />
-                                    <span className='mr-[1rem]'><AiFillExclamationCircle /></span>
+                                    <span className='mr-[1rem] cursor-pointer'><AiFillExclamationCircle onClick={()=>show_info_fild("/img/home_page/1.jpg","yyyyyyyyyyyy")}/></span>
                                 </div>
 
                                 <div className='flex justify-end items-center lg:w-[25rem] w-[20rem] mt-[1rem]'>
                                     <label htmlFor='andaza_zanoo' className='ml-[1rem] lg:text-[1rem] text-[0.9rem] font-v-light'>  اندازه زانو : </label>
                                     <input {...formik.getFieldProps("andaza_zanoo")} className={`border-2 ${formik.touched.andaza_zanoo && formik.errors.andaza_zanoo ? "border-red-600 placeholder:text-[--them5] placeholder:text-[0.7rem] indent-1" : ""} rounded-lg shadow-md outline-none`} placeholder={`${formik.touched.andaza_zanoo && formik.errors.andaza_zanoo ? formik.errors.andaza_zanoo : "اندازه زانو"}`} id='andaza_zanoo' type="text" />
-                                    <span className='mr-[1rem]'><AiFillExclamationCircle /></span>
+                                    <span className='mr-[1rem] cursor-pointer'><AiFillExclamationCircle onClick={()=>show_info_fild("/img/home_page/1.jpg","yyyyyyyyyyyy")}/></span>
                                 </div>
 
                                 <div className='flex justify-end items-center lg:w-[25rem] w-[20rem] mt-[1rem]'>
                                     <label htmlFor='andaza_dampa' className='ml-[1rem] lg:text-[1rem] text-[0.9rem] font-v-light'>  اندازه دمپا : </label>
                                     <input {...formik.getFieldProps("andaza_dampa")} className={`border-2 ${formik.touched.andaza_dampa && formik.errors.andaza_dampa ? "border-red-600 placeholder:text-[--them5] placeholder:text-[0.7rem] indent-1" : ""} rounded-lg shadow-md outline-none`} placeholder={`${formik.touched.andaza_dampa && formik.errors.andaza_dampa ? formik.errors.andaza_dampa : "اندازه دم پا"}`} id='andaza_dampa' type="text" />
-                                    <span className='mr-[1rem]'><AiFillExclamationCircle /></span>
+                                    <span className='mr-[1rem] cursor-pointer'><AiFillExclamationCircle onClick={()=>show_info_fild("/img/home_page/1.jpg","yyyyyyyyyyyy")}/></span>
                                 </div>
 
                                 <div className='flex justify-end items-center lg:w-[25rem] w-[20rem] mt-[1rem]'>
                                     <label htmlFor='andaza_fagh' className='ml-[1rem] lg:text-[1rem] text-[0.9rem] font-v-light'> اندزه فاق : </label>
                                     <input {...formik.getFieldProps("andaza_fagh")} className={`border-2 ${formik.touched.andaza_fagh && formik.errors.andaza_fagh ? "border-red-600 placeholder:text-[--them5] placeholder:text-[0.7rem] indent-1" : ""} rounded-lg shadow-md outline-none`} placeholder={`${formik.touched.andaza_fagh && formik.errors.andaza_fagh ? formik.errors.andaza_fagh : "اندازه فاق"}`} id='andaza_fagh' type="text" />
-                                    <span className='mr-[1rem]'><AiFillExclamationCircle /></span>
+                                    <span className='mr-[1rem] cursor-pointer'><AiFillExclamationCircle onClick={()=>show_info_fild("/img/home_page/1.jpg","yyyyyyyyyyyy")}/></span>
                                 </div>
 
                                 <div className='flex justify-end items-center lg:w-[25rem] w-[20rem] mt-[1rem]'>
@@ -227,7 +241,7 @@ function Pants_order() {
                                         <option value="مشکی راه راه">مشکی راه راه </option>
                                         <option value="مشکی چهار خانه">مشکی چهارخانه</option>
                                     </select>
-                                    <span className='mr-[1rem]'><AiFillExclamationCircle /></span>
+                                    <span className='mr-[1rem] cursor-pointer'><AiFillExclamationCircle onClick={()=>show_info_fild("/img/home_page/1.jpg","yyyyyyyyyyyy")}/></span>
                                 </div>
 
                                 <div className='flex justify-end items-center lg:w-[25rem] w-[20rem] mt-[1rem]'>
@@ -238,7 +252,7 @@ function Pants_order() {
                                         <option value="1170000">پارچه مطهری</option>
                                         <option value="650000">پارچه عالیجناب</option>
                                     </select>
-                                    <span className='mr-[1rem]'><AiFillExclamationCircle /></span>
+                                    <span className='mr-[1rem] cursor-pointer'><AiFillExclamationCircle onClick={()=>show_info_fild("/img/home_page/1.jpg","yyyyyyyyyyyy")}/></span>
                                 </div>
 
                                 <div className='mt-[2rem] flex justify-center items-center flex-row'>
