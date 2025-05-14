@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import Neewproductslide from "@/public/component/home_page/neew-product-slide"
 import { CiPlay1 } from "react-icons/ci"
-import { useState,useRef } from "react"
+import { useState } from "react"
 import dynamic from "next/dynamic"
 
 

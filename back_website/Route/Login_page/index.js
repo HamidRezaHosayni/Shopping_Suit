@@ -13,33 +13,45 @@ const { meddelware_for_validate_method_route, validation_All } = require("./func
 route_login.use(meddelware_for_validate_method_route)
 route_login.post("/Login", validation_All.validation, async (req, res) => {
 
-    errors = validationResult(req)
-    if (!errors.isEmpty()) {
-        console.log("error in validation Regester form")
-        return res.status(200).json({ errors: errors.array() });
-    } else {
+    try{
 
-        const select_regester = await SELECT_ALL_TABLE_REGESTER()
-        const find_username_and_password = select_regester.find(item => item.username === req.body.username)
-        const validation_password = find_username_and_password ? await compae_hash(req.body.password, find_username_and_password.password) : null;
-
-        if (!find_username_and_password) {
-            res.status(200).send({ "Message_type": "error", "message": "کاربری بااین نام وجود ندارد" })
-            return;
+        errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            console.log("error in validation Regester form")
+            return res.status(200).json({ errors: errors.array() });
         } else {
-            if (find_username_and_password && !validation_password) {
-                res.status(200).send({ "Message_type": "error", "message": "رمز عبور وارد شده نامعتبر هست" })
+    
+            const select_regester = await SELECT_ALL_TABLE_REGESTER();
+
+            if (!select_regester || select_regester.length === 0) {
+                console.error("Error: regester table is empty");
+                return res.status(200).send({ "Message_type": "error", "message": "جدول کاربران خالی است" });
+            }
+
+            const find_username_and_password = select_regester.find(item => item.username === req.body.username);
+            const validation_password = find_username_and_password ? await compae_hash(req.body.password, find_username_and_password.password) : null;
+    
+            if (!find_username_and_password) {
+                res.status(200).send({ "Message_type": "error", "message": "کاربری بااین نام وجود ندارد" })
                 return;
             } else {
-
-                const expiresIn = 3600;
-                Token_val_jwt = process.env.TOKEN_VALIDATION_JWT;
-                const token = jwt.sign({ "id": find_username_and_password.id }, Token_val_jwt, { expiresIn });
-                return res.status(200).send({ "Message_type": "successfull", "message": "شما با موفقیت وارد شدید", "vrify_Login": { "jwt": token, "redirect": "http://localhost:3000/" } })
-                
+                if (find_username_and_password && !validation_password) {
+                    res.status(200).send({ "Message_type": "error", "message": "رمز عبور وارد شده نامعتبر هست" })
+                    return;
+                } else {
+    
+                    const expiresIn = 3600;
+                    Token_val_jwt = process.env.TOKEN_VALIDATION_JWT;
+                    const token = jwt.sign({ "id": find_username_and_password.id }, Token_val_jwt, { expiresIn });
+                    return res.status(200).send({ "Message_type": "successfull", "message": "شما با موفقیت وارد شدید", "vrify_Login": { "jwt": token, "redirect": "http://localhost:3000/" } })
+                    
+                }
             }
+    
         }
 
+    }catch(e){
+        console.log(e)
     }
 })
 

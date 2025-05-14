@@ -60,18 +60,20 @@ function Show_Regester_product() {
   const handleShowProfileUser=(id_product)=>{
     navigate("/Show_profile_user",{state:{id_product}})
   }
-  const delete_Regester_product_user=(value)=>{
-    axios.post(`${process.env.REACT_APP_API_KEY}/delete_Regester_product`,{value}, {
+  const delete_Regester_product_user = (id) => {
+    axios.post(`${process.env.REACT_APP_API_KEY}/delete_Regester_product`, { value: id }, {
       headers: {
         "authorization": Authorization_token
       }
-    }).then((value) => {
-      console.log(value)
-    }).catch((e) => {
-      console.log(e)
-     })
+    }).then((response) => {
+      console.log(response);
 
-  }
+      // حذف محصول از لیست و به‌روزرسانی state
+      set_Rgester_product((prevProducts) => prevProducts.filter((product) => product.id !== id));
+    }).catch((e) => {
+      console.log(e);
+    });
+  };
 
 
     return (
