@@ -25,6 +25,7 @@ dist/
 public/sw.js
 public/workbox-*.js
 public/workbox-*.json
+cotshalvar/public/img/upload_img/*
 coverage/
 jest/
 cypress/

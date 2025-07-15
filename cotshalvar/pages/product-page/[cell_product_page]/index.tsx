@@ -40,9 +40,6 @@ const [selectedSize, setSelectedSize] = useState("");
 const router = useRouter();
 const id= router.query;
 
-// state for count product 
-const [count_product,set_count_product]=useState(1)
-
    
   // info product 
   const [info_product,set_info_product]=useState<any>({})
@@ -113,11 +110,11 @@ const [count_product,set_count_product]=useState(1)
 
 
   // add size and count product to shopping_westbasket 
-  const count_and_size={...info_product,"size":selectedSize,"count":count_product}
+  const count_and_size={...info_product,"size":selectedSize}
   const plus_shopping_westbasket=()=>{
-    console.log(count_product)
+    
     console.log(selectedSize)
-    if(selectedSize === '0' || selectedSize === "" || selectedSize === null || count_product === 0){
+    if(selectedSize === '0' || selectedSize === "" || selectedSize === null){
       set_message_popup_notif({ "Message_type": "error", "message":"تعداد محصول نمیتواند خالی باشد \n سایز محصول نمیتواند خالی باشد" })
       show_and_hidden_popup()
       set_redirect_page(`http://localhost:3000/product-page/${info_product.id}`)
@@ -227,17 +224,18 @@ const commend_textaria=useRef<any>();
                 </div>
 
                 {/* count priduct  */}
-                <div className='flex justify-start items-center flex-row'>
+                {/* <div className='flex justify-start items-center flex-row'>
                   <span className="lg:text-[1rem] text-[0.8rem] font-v-medium">تعداد محصول : </span>
                   <span className='cursor-pointer ml-[0.5rem] mr-[1rem]'><HiPlusSm className="text-[1.4rem]" onClick={()=>set_count_product(count_product+1)}/></span>
                   <span className='border px-[0.5rem] w-[2rem] h-[2rem] rounded-lg bg-[--them4] text-[--them2] flex justify-center items-center'>{count_product}</span>
                   <span className='cursor-pointer mr-[0.5rem] pb-[0.6rem] p'><MdMinimize className="text-[1.4rem]" onClick={()=>{set_count_product(count_product-1); if(count_product==0){set_count_product(0)}}}/></span>
-                </div>
+                </div> */}
 
                 <div>
                   <label htmlFor="size" className="lg:text-[1rem] text-[0.8rem] font-v-medium">سایز محصول : </label>
 
                   <select name="size" onChange={handleSizeChange} className="border w-[10rem] rounded-lg bg-[--them3]" id="suit">
+                    <option value=""></option>
                     <option value="42">42</option>
                     <option value="43">43</option>
                     <option value="44">44</option>
