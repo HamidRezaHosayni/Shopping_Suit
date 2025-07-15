@@ -14,7 +14,8 @@ route_validation_email.get("/validation_email", async (req, res) => {
     try{
         
         const select_table_regeser_validation = await SELECT_ALL_TABLE_REGESTER_VALIDATION()
-        const find_id_query = select_table_regeser_validation.find(item => item.id === req.query.id)
+        const find_id_query = select_table_regeser_validation.find(item => item.id == req.query.id)
+        console.log(req.query.id)
     
         if (find_id_query) {
             console.log(find_id_query)

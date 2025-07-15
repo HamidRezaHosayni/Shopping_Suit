@@ -12,7 +12,7 @@ import Link from 'next/link';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { CiHeart, CiShoppingCart } from 'react-icons/ci';
-import { introduce_save_product_heart, add_product_in_shopping_westbasket } from '@/public/js/introduce_save_product_heart'
+import { introduce_save_product_heart } from '@/public/js/introduce_save_product_heart'
 import { FaHeart } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import Introduce_product from '@/public/redux/introduse_product_heart';
@@ -37,9 +37,6 @@ function Newproductslider_procpage() {
     const introduce_product = useRef<any>()
 
 
-    const shopping_wetbasket = (value: any) => {
-        add_product_in_shopping_westbasket(value)
-    }
 
     const introduce_heart_product = (value: any) => {
         const mm = introduce_save_product_heart(introduce_product, value);
@@ -124,7 +121,6 @@ function Newproductslider_procpage() {
                                                 </div>
                                                 <div className="flex justify-end items-center flex-row mr-[1rem]">
                                                     <span>
-                                                        <CiShoppingCart onClick={() => shopping_wetbasket(product.id)} className='lg:text-[1.5rem] text-[1rem] cursor-pointer' />
                                                     </span>
                                                 </div>
                                             </div>
