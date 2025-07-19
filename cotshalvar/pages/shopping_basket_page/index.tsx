@@ -1,4 +1,3 @@
-import { add_product_in_shopping_westbasket } from '@/public/js/introduce_save_product_heart'
 import { show_popup_Element } from '@/public/js/popup_elment_form'
 import axios from 'axios'
 import Image from 'next/image'

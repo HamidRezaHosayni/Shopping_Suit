@@ -1,4 +1,4 @@
-import { add_product_in_shopping_westbasket, introduce_save_product_heart } from '@/public/js/introduce_save_product_heart';
+import { introduce_save_product_heart } from '@/public/js/introduce_save_product_heart';
 import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -21,9 +21,6 @@ function Introduce_product1() {
   const introduce_product = useRef<any>()
 
 
-  const shopping_wetbasket = (value: any) => {
-    add_product_in_shopping_westbasket(value)
-  }
 
   const introduce_wetbasket = (value1: any) => {
     introduce_save_product_heart(null, value1);
@@ -91,7 +88,7 @@ function Introduce_product1() {
                       </div>
                       <div className="flex justify-end items-center flex-row mr-[1rem]">
                         <span>
-                          <CiShoppingCart onClick={() => shopping_wetbasket(product.id)} className='lg:text-[1.5rem] text-[1rem] cursor-pointer' />
+                          <CiShoppingCart className='lg:text-[1.5rem] text-[1rem] cursor-pointer' />
                         </span>
                       </div>
                     </div>

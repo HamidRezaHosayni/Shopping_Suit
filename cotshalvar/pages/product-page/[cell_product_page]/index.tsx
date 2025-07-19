@@ -48,10 +48,11 @@ const id= router.query;
  // action heart introduce 
  const [heartchange,set_heartchange]=useState(true)
  useEffect(()=>{
-   const introduce_product1:any= JSON.parse(window.localStorage.getItem("introduse_product")!)
-  introduce_product1?.find((value:any)=>info_product.id===value)?set_heartchange(true) : set_heartchange(false)
-
- })
+   const introduce_product1: any = JSON.parse(window.localStorage.getItem("introduse_product")!);
+  introduce_product1?.find((value: any) => info_product.id === value)
+    ? set_heartchange(true)
+    : set_heartchange(false);
+}, [info_product.id])
  
 //  add and remove introduce product heart icon 
  const introduce_product=()=>{
@@ -92,7 +93,7 @@ const id= router.query;
 
   // get information one product and get commend product
   useEffect(() => {
-    axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/get_one_product`,id,{
+    axios.post(`${process.env.NEXT_PUBLIC_API_KEY}/get_one_product`, id, {
       headers: {
         "Content-Type": "application/json",
         "Authorization": window.localStorage.getItem("Token_validation")
@@ -101,12 +102,9 @@ const id= router.query;
       set_info_product(vlaue.data.info_product[0])
       set_comment_product(vlaue.data.comment_product)
     }).catch((e) => { 
-
       console.log(e)
-
-     })
-
-  }, [set_comment_product,set_info_product])
+    })
+  }, [id])
 
 
   // add size and count product to shopping_westbasket 
@@ -295,9 +293,9 @@ const commend_textaria=useRef<any>();
             <div className="lg:mt-[5rem] mt-[2rem]">
               <ul>
                 {
-                  commet_product?.map((comment:any)=>(
+                  commet_product?.map((comment: any, index: number) => (
 
-                    <li className="lg:text-[1rem] text-[0.8rem] font-v-light p-2 flex justify-start items-center flex-row">
+                    <li key={comment.id || index} className="lg:text-[1rem] text-[0.8rem] font-v-light p-2 flex justify-start items-center flex-row">
                       <span className="w-[2rem] h-[2rem] rounded-2xl bg-[--them3] ml-[0.4rem] border"></span>
                       <span className=" bg-[--them3] p-2 rounded-lg">{comment.comment}</span>
                     </li>

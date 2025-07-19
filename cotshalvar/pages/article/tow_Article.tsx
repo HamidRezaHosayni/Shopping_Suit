@@ -1,19 +1,10 @@
 import Image from 'next/image'
 import React from 'react'
 
-
-import image_1 from "@/public/img/article/4.jpg"
-import image_2 from "@/public/img/article/5.jpg"
-import image_3 from "@/public/img/article/6.jpg"
-import image_4 from "@/public/img/article/7.jpg"
-import image_5 from "@/public/img/article/8.jpg"
-
- 
-
 function Tow_Article() {
     return (
         <div className='container m-auto leading-9'>
-            <Image className='!w-full' placeholder='blur' priority={false} src={image_1} width={500} height={500} alt='یک مرد در جلوی ایینه که جلوی کت خود را گرفته است و دارد به ایینه نگاه میکند که پشت سر ان یک مبل سفید است' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
+            <Image className='!w-full' placeholder='blur' priority={false} src="/img/article/4.jpg" width={500} height={500} alt='یک مرد در جلوی ایینه که جلوی کت خود را گرفته است و دارد به ایینه نگاه میکند که پشت سر ان یک مبل سفید است' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
 
             <div className='px-4 lg:px-[unset]'>
                 <h1 className='lg:text-[2rem] text-[1.5rem] text-center lg:text-right font-v-medium mt-[5rem]'>چند نکته در مورد کت و شلوار که هر مردی باید بداند</h1>
@@ -29,7 +20,7 @@ function Tow_Article() {
                     <p className='lg:text-[1rem] text-[0.8rem] text-justify font-v-light'>این دو رنگ دست شما را در انتخاب پیراهن و کروات نیز باز می گذارد. البته که بهترین انتخاب ها در کت و شلوار های کلاسیک پیراهن های ساده و یک رنگ هستند.</p>
                 </div>
                 <div className='lg:w-[50%] lg:mr-[2rem] mt-[2rem] lg:mt-[unset]'>
-                    <Image className='!w-full' placeholder='blur' priority={false} src={image_2} width={500} height={500} alt='عکس دو مرد با کت ها ابی وخاکستری که جلوی کت های خود راگرفته است و به صورت نیم تنه در تصویر هستن' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
+                    <Image className='!w-full' placeholder='blur' priority={false} src="/img/article/5.jpg" width={500} height={500} alt='عکس دو مرد با کت ها ابی وخاکستری که جلوی کت های خود راگرفته است و به صورت نیم تنه در تصویر هستن' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
                 </div>
             </div>
 
@@ -41,7 +32,7 @@ function Tow_Article() {
                     <p className='lg:text-[1rem] text-[0.8rem] text-justify font-v-light'>همچنین می توانید برای پیراهن، به سمت طرح های راه راه بروید و انتخاب متفاوتی در مورد کروات داشته باشید. این ترکیب تقریبا برای همه جا شما را خیلی شکیل می کند. می توانید از قواعد مرسوم فراتر بروید و حتی این ترکیب را برای قرار های کاری نیز استفاده کنید. شاید کمی نیاز به انعطاف باشد تا جلسه کاری اتان دست آوردی بیشتر از چند فنجان چایی داشته باشد و توجه ها به کت و شلوار شما و در ادامه به صحبت های شما جلب شود.</p>
                 </div>
                 <div className='lg:w-[40%] ml-[2rem]'>
-                    <Image className='!w-full' placeholder='blur' priority={false} src={image_3} width={500} height={500} alt='عکس یک مرد با کت خاکستری که به صورت نیم تنه در تصویر هست ودارد لبخند میزند' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
+                    <Image className='!w-full' placeholder='blur' priority={false} src="/img/article/6.jpg" width={500} height={500} alt='عکس یک مرد با کت خاکستری که به صورت نیم تنه در تصویر هست ودارد لبخند میزند' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
                 </div>
             </div>
 
@@ -56,7 +47,7 @@ function Tow_Article() {
 
                 </div>
                 <div className='lg:w-[50%] lg:mr-[4rem] mt-[1rem] lg:mt-[unset]'>
-                    <Image className='!w-full' placeholder='blur' priority={false} src={image_4} width={500} height={500} alt='عکس یک مرد با کت وشلوار خاکستری که دارد به کنار خود نگاه میکند' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
+                    <Image className='!w-full' placeholder='blur' priority={false} src="/img/article/7.jpg" width={500} height={500} alt='عکس یک مرد با کت وشلوار خاکستری که دارد به کنار خود نگاه میکند' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
                 </div>
             </div>
 
@@ -80,7 +71,7 @@ function Tow_Article() {
                 </div>
 
                 <div className='lg:w-[50%] lg:ml-[3rem]'>
-                    <Image className='!w-full' src={image_5} placeholder='blur' priority={false} width={500} height={500} alt='عکس یک مرد با کت مشکی که لبه استین خود را گرفته است و یکد دستبند سیاه داردبا موهای بلند وپیراهن سفید' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
+                    <Image className='!w-full' src="/img/article/8.jpg" placeholder='blur' priority={false} width={500} height={500} alt='عکس یک مرد با کت مشکی که لبه استین خود را گرفته است و یکd دستبند سیاه داردبا موهای بلند وپیراهن سفید' title="خیاطی سعید با برند art_man_class بهترین کت وشلوار بازاری و شخصی دوزی"/>
                 </div>
             </div>
 

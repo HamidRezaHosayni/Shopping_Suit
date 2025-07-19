@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import Image from 'next/image'
 
-function regester_product() {
+function Regester_product() {
   const ID_user = useSelector((state: any) => state.is_Login.Token_Login)
   const is_Login = useSelector((state: any) => state.is_Login.is_Login);
   const [pant_order,set_pant_order]=useState<any>([])
@@ -308,4 +308,4 @@ useEffect(()=>{
   )
 }
 
-export default regester_product
+export default Regester_product
